@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>荣耀战场 - 史诗级游戏体验</title>
+    <title>理科生穿越之旅 - 与北宋沈括的故事</title>
     <link rel="stylesheet" href="css/styles.css" />
     <!-- 引入字体图标 -->
     <link
@@ -18,13 +18,14 @@
       <!-- 头部区域 -->
       <header class="header" :class="{ 'scrolled': isScrolled }">
         <div class="container">
-          <h1 class="game-title">{{ gameTitle }}</h1>
+          <h1 class="game-title">{{ shortGameTitle }}</h1>
           <nav class="nav">
             <ul>
               <li><a href="#overview">游戏概述</a></li>
               <li><a href="#features">游戏特色</a></li>
               <li><a href="#system">系统需求</a></li>
               <li><a href="#download" class="nav-highlight">立即下载</a></li>
+              <li><a href="about.html">关于我们</a></li>
             </ul>
           </nav>
         </div>
@@ -36,12 +37,12 @@
         <section class="hero-section">
           <div class="container">
             <div class="hero-content">
-              <h2>探索史诗般的<br />冒险世界</h2>
+              <h2>穿越时空<br />与北宋科学家的奇遇</h2>
               <p>
-                进入一个充满神秘和挑战的奇幻世界，成为传说中的英雄，书写属于你的传奇
+                踏上一段跨越千年的科学探索之旅，与古代科学巨匠沈括一起揭开物理学的奥秘
               </p>
               <a href="#download" class="btn btn-primary"
-                ><i class="ri-download-cloud-2-line"></i> 立即开始</a
+                ><i class="ri-download-cloud-2-line"></i> 开始冒险</a
               >
             </div>
           </div>
@@ -56,25 +57,23 @@
           <div class="container">
             <h2 class="section-title">游戏概述</h2>
             <p class="section-subtitle">
-              踏上一场改变世界的旅程，成为命运的主宰者
+              穿越时空，与古代科学家共同探索科学奥秘
             </p>
             <div class="overview-content">
               <div class="overview-text fade-in">
                 <p>
                   《{{ gameTitle
-                  }}》是一款融合了动作、冒险和角色扮演元素的次世代多人在线游戏。游戏背景设定在一个中世纪奇幻世界，玩家将扮演一位被选中的英雄，踏上拯救世界的史诗旅程。
+                  }}》是一款融合了科学教育、历史探索和角色扮演元素的沉浸式冒险游戏。在现代的某一天，一位大学生（玩家扮演的角色）在图书馆偶然发现了一本古老的书籍——《梦溪笔谈》。当他翻开书页时，一道神秘的光芒将他卷入了一个时空漩涡，穿越到了北宋时期，成为了著名科学家沈括的学徒。
                 </p>
                 <p>
-                  在这个广阔的开放世界中，你将面对无数挑战，结交志同道合的伙伴，与强大的敌人进行史诗般的战斗。游戏采用自研的光子引擎，呈现出令人惊叹的视觉效果和流畅的游戏体验。
+                  在这个奇妙的时代，玩家需要跟随沈括的脚步，探索古代物理学的奥秘，帮助他完成一系列科学任务，同时解开隐藏在历史中的谜团。从小孔成像到磁学原理，从水利工程到天文测量，玩家将亲身体验科学在古代中国的发展历程。
                 </p>
                 <p>
-                  无论你是喜欢独自冒险的勇士，还是渴望组队征战的战略家，《{{
-                  gameTitle
-                  }}》都将为你提供无与伦比的游戏体验，让你在这个充满魔法与科技的世界中书写属于自己的传奇。
+                  这不仅是一场穿越时空的奇妙冒险，更是一次与历史对话、与科学共舞的非凡体验。你准备好跟随沈括的脚步，开启这段跨越千年的科学探索之旅了吗？
                 </p>
               </div>
               <div class="overview-image fade-in delay-2">
-                <div class="image-placeholder">游戏概述图片</div>
+                <div class="image-placeholder">游戏场景预览</div>
               </div>
             </div>
           </div>
@@ -85,7 +84,7 @@
           <div class="container">
             <h2 class="section-title">游戏特色</h2>
             <p class="section-subtitle">
-              发现让《{{ gameTitle }}》与众不同的独特体验
+              发现让《{{ shortGameTitle }}》独一无二的精彩体验
             </p>
             <div class="features-grid">
               <div
@@ -99,6 +98,51 @@
                 </div>
                 <h3>{{ feature.title }}</h3>
                 <p>{{ feature.description }}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 章节预览 -->
+        <section id="chapters" class="section">
+          <div class="container">
+            <h2 class="section-title">五章史诗冒险</h2>
+            <p class="section-subtitle">每一章都是一段独特的科学探索之旅</p>
+            <div class="chapters-container">
+              <div class="chapter-card fade-in" data-number="I">
+                <div class="chapter-number">第一章</div>
+                <h3>时空漩涡</h3>
+                <p>
+                  被卷入时空漩涡，与沈括初次相遇，开始探索小孔成像的物理奥秘。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-1" data-number="II">
+                <div class="chapter-number">第二章</div>
+                <h3>光影之谜</h3>
+                <p>
+                  协助沈括研究光线的传播规律，通过实验验证光的直线传播和反射原理。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-2" data-number="III">
+                <div class="chapter-number">第三章</div>
+                <h3>汴京的挑战</h3>
+                <p>
+                  前往汴京，参与水利工程的设计，运用科学原理解决洪水泛滥的问题。
+                </p>
+              </div>
+              <div class="chapter-card fade-in" data-number="IV">
+                <div class="chapter-number">第四章</div>
+                <h3>梦溪园的奇遇</h3>
+                <p>
+                  在梦溪园中协助沈括撰写《梦溪笔谈》，研究磁针偏角等自然现象。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-1" data-number="V">
+                <div class="chapter-number">第五章</div>
+                <h3>回归与传承</h3>
+                <p>
+                  完成最终的科学实验，寻找回到现代的方法，决定如何传承沈括的科学智慧。
+                </p>
               </div>
             </div>
           </div>
@@ -159,8 +203,8 @@
             <h2 class="section-title">立即下载</h2>
             <div class="download-content">
               <p>
-                准备好踏上冒险之旅了吗？现在就下载《{{ gameTitle
-                }}》，免费体验这款史诗级游戏！
+                准备好踏上冒险之旅了吗？现在就下载《{{ shortGameTitle
+                }}》，免费体验这款科学冒险游戏！
               </p>
               <div class="download-options">
                 <button @click="downloadGame" class="btn btn-download">
@@ -179,13 +223,11 @@
       <footer class="footer">
         <div class="container">
           <div class="footer-content">
-            <p>&copy; 2025 {{ gameTitle }}. 保留所有权利。</p>
+            <p>&copy; 2025 理智先锋娱乐互动工作室. 保留所有权利。</p>
             <div class="footer-links">
               <a href="#"><i class="ri-shield-check-line"></i> 隐私政策</a>
               <a href="#"><i class="ri-file-list-3-line"></i> 使用条款</a>
-              <a href="#"
-                ><i class="ri-customer-service-2-line"></i> 联系我们</a
-              >
+              <a href="about.html"><i class="ri-team-line"></i> 关于我们</a>
             </div>
           </div>
         </div>

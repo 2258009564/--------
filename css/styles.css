@@ -243,6 +243,102 @@ img {
   opacity: 0.7;
 }
 
+/* 章节预览样式优化 */
+.chapters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.chapter-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 35px 30px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  will-change: var(--will-change-transform), box-shadow;
+  height: 100%;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.chapter-number {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  align-self: flex-start;
+}
+
+.chapter-card h3 {
+  color: var(--primary-color);
+  font-size: 22px;
+  margin-bottom: 15px;
+  position: relative;
+  font-weight: 700;
+}
+
+.chapter-card p {
+  color: var(--medium-dark);
+  font-size: 16px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* 添加章节序号悬浮装饰 */
+.chapter-card::before {
+  content: attr(data-number);
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-size: 120px;
+  font-weight: 800;
+  color: rgba(99, 102, 241, 0.06);
+  line-height: 1;
+  z-index: 0;
+  transition: var(--transition);
+}
+
+.chapter-card:hover::before {
+  color: rgba(99, 102, 241, 0.1);
+  transform: translateY(-5px);
+}
+
+@media (max-width: 992px) {
+  .chapters-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .chapter-card {
+    padding: 25px;
+  }
+
+  .chapter-card h3 {
+    font-size: 20px;
+  }
+
+  .chapter-card::before {
+    font-size: 100px;
+    opacity: 0.04;
+  }
+}
+
 /* 头部样式 */
 .header {
   position: fixed;
@@ -792,6 +888,10 @@ img {
   .features-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
+
+  .chapters-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -860,5 +960,18 @@ img {
 
   .requirement-col {
     padding: 30px;
+  }
+
+  .chapter-card {
+    padding: 25px;
+  }
+
+  .chapter-card h3 {
+    font-size: 20px;
+  }
+
+  .chapter-card::before {
+    font-size: 100px;
+    opacity: 0.04;
   }
 }

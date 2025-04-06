@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>关于我们 - 理智先锋娱乐互动工作室</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <!-- 引入字体图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    />
+    <!-- 引入Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 头部区域 -->
+      <header class="header" :class="{ 'scrolled': isScrolled }">
+        <div class="container">
+          <h1 class="game-title">{{ gameTitle }}</h1>
+          <nav class="nav">
+            <ul>
+              <li><a href="index.html">首页</a></li>
+              <li><a href="index.html#overview">游戏概述</a></li>
+              <li><a href="index.html#features">游戏特色</a></li>
+              <li><a href="index.html#download">立即下载</a></li>
+              <li><a href="about.html" class="active">关于我们</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- 主要内容区域 -->
+      <main>
+        <!-- 团队介绍区域 -->
+        <section class="about-hero">
+          <div class="container">
+            <div class="about-hero-content">
+              <h2>理智先锋娱乐互动工作室</h2>
+              <p>致力于科学教育与游戏体验的融合创新</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 团队使命 -->
+        <section class="section">
+          <div class="container">
+            <h2 class="section-title">我们的使命</h2>
+            <div class="mission-content">
+              <div class="mission-text fade-in">
+                <p>
+                  理智先锋娱乐互动工作室致力于将科学教育与游戏娱乐相结合，通过沉浸式体验让玩家在享受游戏乐趣的同时，获取知识，激发对科学的热情。
+                </p>
+                <p>
+                  我们相信，游戏不仅是一种娱乐方式，更是传递知识、传承文化的重要媒介。通过精心设计的游戏场景和互动体验，我们希望让玩家在虚拟世界中探索科学奥秘，感受历史魅力。
+                </p>
+                <p>
+                  《理科生穿越之旅——与北宋沈括的故事》是我们的首款作品，它融合了物理学知识、历史文化和游戏互动，为玩家提供了一次独特的科学冒险之旅。
+                </p>
+              </div>
+              <div class="mission-image fade-in delay-1">
+                <div class="image-placeholder">工作室理念</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 团队成员 -->
+        <section class="section section-dark">
+          <div class="container">
+            <h2 class="section-title">团队成员</h2>
+            <p class="section-subtitle">优秀的团队，创造非凡的作品</p>
+            <div class="team-container">
+              <div class="team-leader fade-in">
+                <div class="team-member-card">
+                  <div class="team-member-avatar">
+                    <div class="avatar-placeholder">导师</div>
+                  </div>
+                  <h3>梅险</h3>
+                  <p class="team-member-title">指导老师</p>
+                </div>
+              </div>
+
+              <div class="team-members">
+                <div class="team-member-card fade-in">
+                  <div class="team-member-avatar">
+                    <div class="avatar-placeholder">LZ</div>
+                  </div>
+                  <h3>梁震宇</h3>
+                  <p class="team-member-title">项目成员</p>
+                </div>
+
+                <div class="team-member-card fade-in delay-1">
+                  <div class="team-member-avatar">
+                    <div class="avatar-placeholder">YY</div>
+                  </div>
+                  <h3>于逸潇</h3>
+                  <p class="team-member-title">项目成员</p>
+                </div>
+
+                <div class="team-member-card fade-in delay-2">
+                  <div class="team-member-avatar">
+                    <div class="avatar-placeholder">CY</div>
+                  </div>
+                  <h3>陈业</h3>
+                  <p class="team-member-title">项目成员</p>
+                </div>
+
+                <div class="team-member-card fade-in delay-3">
+                  <div class="team-member-avatar">
+                    <div class="avatar-placeholder">ZC</div>
+                  </div>
+                  <h3>赵晨曦</h3>
+                  <p class="team-member-title">项目成员</p>
+                </div>
+
+                <div class="team-member-card fade-in delay-4">
+                  <div class="team-member-avatar">
+                    <div class="avatar-placeholder">ZJ</div>
+                  </div>
+                  <h3>郑佳悦</h3>
+                  <p class="team-member-title">项目成员</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 我们的项目 -->
+        <section class="section">
+          <div class="container">
+            <h2 class="section-title">我们的项目</h2>
+            <div class="project-showcase fade-in">
+              <div class="project-card">
+                <div class="project-image">
+                  <div class="image-placeholder">游戏封面</div>
+                </div>
+                <div class="project-info">
+                  <h3>理科生穿越之旅——与北宋沈括的故事</h3>
+                  <p>
+                    这是我们的首款作品，一款融合了科学教育与历史探索的冒险游戏。玩家将穿越到北宋时期，成为科学家沈括的学徒，通过解决各种科学难题、完成历史任务，逐步揭开古代科学的奥秘。
+                  </p>
+                  <p>
+                    游戏中的科学原理均基于真实的物理学知识，历史背景则参考了《梦溪笔谈》等史料，旨在让玩家在有趣的游戏体验中学习科学知识，感受中国古代科技的魅力。
+                  </p>
+                  <a href="index.html#download" class="btn btn-primary"
+                    >了解更多</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section class="section section-contact">
+          <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-content fade-in">
+              <div class="contact-methods">
+                <div class="contact-method">
+                  <i class="ri-mail-line"></i>
+                  <h3>电子邮件</h3>
+                  <p>lixianjunfang@example.com</p>
+                </div>
+                <div class="contact-method">
+                  <i class="ri-map-pin-line"></i>
+                  <h3>工作室地址</h3>
+                  <p>北京市海淀区科技大学创新楼B区305室</p>
+                </div>
+                <div class="contact-method">
+                  <i class="ri-customer-service-2-line"></i>
+                  <h3>客服热线</h3>
+                  <p>400-123-4567</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- 页脚区域 -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <p>&copy; 2025 理智先锋娱乐互动工作室. 保留所有权利。</p>
+            <div class="footer-links">
+              <a href="#"><i class="ri-shield-check-line"></i> 隐私政策</a>
+              <a href="#"><i class="ri-file-list-3-line"></i> 使用条款</a>
+              <a href="index.html"><i class="ri-home-line"></i> 返回首页</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/about.js"></script>
+  </body>
+</html>

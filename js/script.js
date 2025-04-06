@@ -7,54 +7,55 @@ const app = createApp({
   data() {
     return {
       // 游戏基本信息
-      gameTitle: "荣耀战场",
-      gameVersion: "v2.5.3",
-      gameSize: "52.7 GB",
+      gameTitle: "理科生穿越之旅——与北宋沈括的故事",
+      shortGameTitle: "理科生穿越之旅",
+      gameVersion: "v1.2.1",
+      gameSize: "32.8 GB",
       isScrolled: false,
 
       // 游戏特色列表
       features: [
         {
           id: 1,
-          iconClass: "ri-planet-line",
-          title: "无边界开放世界",
+          iconClass: "ri-time-line",
+          title: "沉浸式时空穿越",
           description:
-            "探索一个面积超过180平方公里的巨大开放世界，包含七大独特区域，每个区域拥有自己的气候、生态系统和种族文明。",
+            "体验从现代穿越到北宋的奇妙旅程，与历史名人沈括面对面交流，亲历古代科学探索的过程。",
         },
         {
           id: 2,
-          iconClass: "ri-sword-line",
-          title: "深度战斗系统",
+          iconClass: "ri-flask-line",
+          title: "科学实验玩法",
           description:
-            "体验基于物理引擎的实时战斗系统，掌握各种武器、元素魔法和战术组合，应对各类挑战。",
+            "通过互动实验验证古代科学原理，从小孔成像到磁针偏角，亲手操作并解锁物理学原理卡牌。",
         },
         {
           id: 3,
-          iconClass: "ri-user-settings-line",
-          title: "极致角色自定义",
+          iconClass: "ri-book-open-line",
+          title: "史实与教育融合",
           description:
-            "通过数百种外观选项和深度技能树，打造专属于你的独特角色，定制专属战斗风格。",
+            "基于《梦溪笔谈》等历史文献，还原北宋时期的科学成就，在游戏中学习物理学知识。",
         },
         {
           id: 4,
-          iconClass: "ri-book-open-line",
-          title: "史诗级叙事体验",
+          iconClass: "ri-compass-3-line",
+          title: "探索开放世界",
           description:
-            "参与由获奖作家精心打造的主线任务和无数支线任务，每个选择都将对游戏世界产生深远影响。",
+            "在精心还原的北宋场景中自由探索，从小镇到汴京，再到梦溪园，体验古代中国的风貌。",
         },
         {
           id: 5,
-          iconClass: "ri-team-line",
-          title: "沉浸式多人体验",
+          iconClass: "ri-movie-line",
+          title: "分支剧情选择",
           description:
-            "与好友组队冒险，探索隐藏副本，参与大型公会战争，或在光荣竞技场中测试你的实力。",
+            "做出不同的选择将影响游戏进程和结局，多种结局等待发现，体验不同的历史可能性。",
         },
         {
           id: 6,
-          iconClass: "ri-music-2-line",
-          title: "顶级视听盛宴",
+          iconClass: "ri-headphone-line",
+          title: "古风音乐配乐",
           description:
-            "沉浸在由奥斯卡获奖作曲家创作的原创交响乐配乐和全3D空间音效中，感受震撼听觉体验。",
+            "原创古典音乐配乐，与游戏场景完美融合，让您沉浸在北宋的文化氛围中。",
         },
       ],
     };
@@ -239,7 +240,7 @@ const app = createApp({
           setTimeout(() => {
             const link = document.createElement("a");
             link.href = downloadLink;
-            link.download = "荣耀战场-安装程序.exe";
+            link.download = "理科生穿越之旅-安装程序.exe";
 
             modal.querySelector(".download-modal-body p").textContent =
               "下载已开始，请勿关闭此窗口";
@@ -324,6 +325,21 @@ const app = createApp({
 
     requestAnimationFrame(() => {
       document.body.classList.add("loaded");
+    });
+
+    // 添加章节卡片动画效果
+    const chapterCards = document.querySelectorAll(".chapter-card");
+
+    chapterCards.forEach((card) => {
+      // 添加鼠标悬停效果
+      card.addEventListener("mouseenter", () => {
+        const number = card.getAttribute("data-number");
+        card.style.borderColor = "rgba(99, 102, 241, 0.3)";
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.borderColor = "rgba(99, 102, 241, 0.1)";
+      });
     });
   },
 
