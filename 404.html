@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - 页面未找到 - 荣耀战场</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- 引入Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
+    <style>
+      .error-container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+          url("../images/download-bg.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .error-content {
+        max-width: 700px;
+        padding: 50px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+      
+      .error-code {
+        font-size: 120px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .error-message {
+        font-size: 28px;
+        margin-bottom: 30px;
+        color: white;
+      }
+      
+      .error-description {
+        color: white;
+        opacity: 0.8;
+        margin-bottom: 30px;
+        font-size: 18px;
+      }
+      
+      .error-actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      
+      @media (max-width: 768px) {
+        .error-code {
+          font-size: 80px;
+        }
+        
+        .error-message {
+          font-size: 22px;
+        }
+        
+        .error-content {
+          padding: 30px;
+          margin: 0 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="errorApp">
+      <div class="error-container">
+        <div class="error-content">
+          <div class="error-code">404</div>
+          <h1 class="error-message">冒险家迷路了！</h1>
+          <p class="error-description">
+            您似乎走入了荣耀战场的未知区域。这片区域可能尚未被探索，或已被黑暗力量摧毁。
+          </p>
+          <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">返回主城</a>
+            <a href="#" onclick="history.back(); return false;" class="btn btn-download">返回上一页</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 创建Vue应用
+      const { createApp } = Vue;
+      
+      // 初始化Vue应用
+      const errorApp = createApp({
+        mounted() {
+          console.log("404页面已加载");
+          
+          // 页面加载动画
+          setTimeout(() => {
+            document.body.classList.add("loaded");
+          }, 300);
+        }
+      }).mount("#errorApp");
+    </script>
+  </body>
+</html>
