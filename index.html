@@ -3,22 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>荣耀战场 - 游戏概况</title>
+    <title>理科生穿越之旅 - 与北宋沈括的故事</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <!-- 引入字体图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    />
     <!-- 引入Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
   </head>
   <body>
     <div id="app">
       <!-- 头部区域 -->
-      <header class="header">
+      <header class="header" :class="{ 'scrolled': isScrolled }">
         <div class="container">
-          <h1 class="game-title">{{ gameTitle }}</h1>
+          <h1 class="game-title">{{ shortGameTitle }}</h1>
           <nav class="nav">
             <ul>
               <li><a href="#overview">游戏概述</a></li>
               <li><a href="#features">游戏特色</a></li>
-              <li><a href="#download">立即下载</a></li>
+              <li><a href="#system">系统需求</a></li>
+              <li><a href="#download" class="nav-highlight">立即下载</a></li>
+              <li><a href="about.html">关于我们</a></li>
             </ul>
           </nav>
         </div>
@@ -30,10 +37,18 @@
         <section class="hero-section">
           <div class="container">
             <div class="hero-content">
-              <h2>探索史诗般的冒险</h2>
-              <p>进入一个充满神秘和挑战的奇幻世界，成为传说中的英雄</p>
-              <a href="#download" class="btn btn-primary">立即开始</a>
+              <h2>穿越时空<br />与北宋科学家的奇遇</h2>
+              <p>
+                踏上一段跨越千年的科学探索之旅，与古代科学巨匠沈括一起揭开物理学的奥秘
+              </p>
+              <a href="#download" class="btn btn-primary"
+                ><i class="ri-download-cloud-2-line"></i> 开始冒险</a
+              >
             </div>
+          </div>
+          <div class="scroll-down">
+            <span>向下滚动探索更多</span>
+            <i class="ri-arrow-down-line"></i>
           </div>
         </section>
 
@@ -41,19 +56,24 @@
         <section id="overview" class="section">
           <div class="container">
             <h2 class="section-title">游戏概述</h2>
+            <p class="section-subtitle">
+              穿越时空，与古代科学家共同探索科学奥秘
+            </p>
             <div class="overview-content">
-              <div class="overview-text">
+              <div class="overview-text fade-in">
                 <p>
                   《{{ gameTitle
-                  }}》是一款融合了动作、冒险和角色扮演元素的多人在线游戏。游戏背景设定在一个中世纪奇幻世界，玩家将扮演一位被选中的英雄，踏上拯救世界的旅程。
+                  }}》是一款融合了科学教育、历史探索和角色扮演元素的沉浸式冒险游戏。在现代的某一天，一位大学生（玩家扮演的角色）在图书馆偶然发现了一本古老的书籍——《梦溪笔谈》。当他翻开书页时，一道神秘的光芒将他卷入了一个时空漩涡，穿越到了北宋时期，成为了著名科学家沈括的学徒。
                 </p>
                 <p>
-                  在这个广阔的开放世界中，你将面对无数挑战，结交志同道合的伙伴，与强大的敌人进行史诗般的战斗。游戏采用最先进的图形引擎，呈现出令人惊叹的视觉效果和流畅的游戏体验。
+                  在这个奇妙的时代，玩家需要跟随沈括的脚步，探索古代物理学的奥秘，帮助他完成一系列科学任务，同时解开隐藏在历史中的谜团。从小孔成像到磁学原理，从水利工程到天文测量，玩家将亲身体验科学在古代中国的发展历程。
+                </p>
+                <p>
+                  这不仅是一场穿越时空的奇妙冒险，更是一次与历史对话、与科学共舞的非凡体验。你准备好跟随沈括的脚步，开启这段跨越千年的科学探索之旅了吗？
                 </p>
               </div>
-              <div class="overview-image">
-                <!-- 游戏概述图片 -->
-                <div class="image-placeholder">游戏概述图片</div>
+              <div class="overview-image fade-in delay-2">
+                <div class="image-placeholder">游戏场景预览</div>
               </div>
             </div>
           </div>
@@ -63,13 +83,19 @@
         <section id="features" class="section section-dark">
           <div class="container">
             <h2 class="section-title">游戏特色</h2>
+            <p class="section-subtitle">
+              发现让《{{ shortGameTitle }}》独一无二的精彩体验
+            </p>
             <div class="features-grid">
               <div
-                class="feature-card"
+                class="feature-card fade-in"
                 v-for="feature in features"
                 :key="feature.id"
+                :class="'delay-' + (feature.id % 3)"
               >
-                <div class="feature-icon">{{ feature.icon }}</div>
+                <div class="feature-icon">
+                  <i :class="feature.iconClass"></i>
+                </div>
                 <h3>{{ feature.title }}</h3>
                 <p>{{ feature.description }}</p>
               </div>
@@ -77,12 +103,60 @@
           </div>
         </section>
 
+        <!-- 章节预览 -->
+        <section id="chapters" class="section">
+          <div class="container">
+            <h2 class="section-title">五章史诗冒险</h2>
+            <p class="section-subtitle">每一章都是一段独特的科学探索之旅</p>
+            <div class="chapters-container">
+              <div class="chapter-card fade-in" data-number="I">
+                <div class="chapter-number">第一章</div>
+                <h3>时空漩涡</h3>
+                <p>
+                  被卷入时空漩涡，与沈括初次相遇，开始探索小孔成像的物理奥秘。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-1" data-number="II">
+                <div class="chapter-number">第二章</div>
+                <h3>光影之谜</h3>
+                <p>
+                  协助沈括研究光线的传播规律，通过实验验证光的直线传播和反射原理。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-2" data-number="III">
+                <div class="chapter-number">第三章</div>
+                <h3>汴京的挑战</h3>
+                <p>
+                  前往汴京，参与水利工程的设计，运用科学原理解决洪水泛滥的问题。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-1" data-number="IV">
+                <div class="chapter-number">第四章</div>
+                <h3>梦溪园的奇遇</h3>
+                <p>
+                  在梦溪园中协助沈括撰写《梦溪笔谈》，研究磁针偏角等自然现象。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-2" data-number="V">
+                <div class="chapter-number">第五章</div>
+                <h3>回归与传承</h3>
+                <p>
+                  完成最终的科学实验，寻找回到现代的方法，决定如何传承沈括的科学智慧。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- 系统需求 -->
-        <section class="section">
+        <section id="system" class="section">
           <div class="container">
             <h2 class="section-title">系统需求</h2>
+            <p class="section-subtitle">
+              确保你的装备能够充分发挥游戏的最佳体验
+            </p>
             <div class="requirements">
-              <div class="requirement-col">
+              <div class="requirement-col fade-in">
                 <h3>最低配置</h3>
                 <ul>
                   <li><strong>操作系统:</strong> Windows 10 64位</li>
@@ -94,13 +168,16 @@
                     <strong>显卡:</strong> NVIDIA GeForce GTX 760 / AMD Radeon
                     R7 260x
                   </li>
+                  <li><strong>DirectX:</strong> 版本 11</li>
+                  <li><strong>网络:</strong> 宽带互联网连接</li>
                   <li><strong>存储空间:</strong> 50 GB 可用空间</li>
+                  <li><strong>声卡:</strong> DirectX 兼容声卡</li>
                 </ul>
               </div>
-              <div class="requirement-col">
+              <div class="requirement-col fade-in delay-1">
                 <h3>推荐配置</h3>
                 <ul>
-                  <li><strong>操作系统:</strong> Windows 10 64位</li>
+                  <li><strong>操作系统:</strong> Windows 10/11 64位</li>
                   <li>
                     <strong>处理器:</strong> Intel Core i7-8700K / AMD Ryzen 5
                     3600X
@@ -110,7 +187,10 @@
                     <strong>显卡:</strong> NVIDIA GeForce RTX 2060 / AMD Radeon
                     RX 5700
                   </li>
+                  <li><strong>DirectX:</strong> 版本 12</li>
+                  <li><strong>网络:</strong> 高速宽带互联网连接</li>
                   <li><strong>存储空间:</strong> 50 GB SSD</li>
+                  <li><strong>声卡:</strong> DirectX 兼容声卡</li>
                 </ul>
               </div>
             </div>
@@ -123,12 +203,12 @@
             <h2 class="section-title">立即下载</h2>
             <div class="download-content">
               <p>
-                准备好踏上冒险之旅了吗？现在就下载《{{ gameTitle
-                }}》，免费体验这款史诗级游戏！
+                准备好踏上冒险之旅了吗？现在就下载《{{ shortGameTitle
+                }}》，免费体验这款科学冒险游戏！
               </p>
               <div class="download-options">
                 <button @click="downloadGame" class="btn btn-download">
-                  立即下载
+                  <i class="ri-download-cloud-2-line"></i> 立即下载
                 </button>
                 <span class="download-info"
                   >版本: {{ gameVersion }} | 大小: {{ gameSize }}</span
@@ -143,11 +223,11 @@
       <footer class="footer">
         <div class="container">
           <div class="footer-content">
-            <p>&copy; 2025 {{ gameTitle }}. 保留所有权利。</p>
+            <p>&copy; 2025 理智先锋娱乐互动工作室. 保留所有权利。</p>
             <div class="footer-links">
-              <a href="#">隐私政策</a>
-              <a href="#">使用条款</a>
-              <a href="#">联系我们</a>
+              <a href="#"><i class="ri-shield-check-line"></i> 隐私政策</a>
+              <a href="#"><i class="ri-file-list-3-line"></i> 使用条款</a>
+              <a href="about.html"><i class="ri-team-line"></i> 关于我们</a>
             </div>
           </div>
         </div>
