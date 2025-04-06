@@ -3,39 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>关于我们 - 理智先锋娱乐互动工作室</title>
+    <title>关于我们 - 理智先锋游戏工作室</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/about-modern.css" />
     <!-- 引入字体图标 -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
     />
+    <!-- 引入Google Fonts现代字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- 引入Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="modern-theme">
       <!-- 主要内容区域 -->
       <main>
         <!-- 团队介绍区域 -->
         <section class="about-hero">
+          <div class="hero-particles"></div>
           <div class="container">
             <div class="about-hero-content">
-              <h2>理智先锋娱乐互动工作室</h2>
+              <span class="hero-badge">游戏 · 教育 · 创新</span>
+              <h2>理智先锋游戏工作室</h2>
               <p>致力于科学教育与游戏体验的融合创新</p>
+              <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary">查看项目</a>
+                <a href="#team" class="btn btn-outline">认识团队</a>
+              </div>
             </div>
           </div>
+          <div class="hero-shape bottom"></div>
         </section>
 
         <!-- 团队使命 -->
-        <section class="section">
+        <section class="section section-mission">
           <div class="container">
-            <h2 class="section-title">我们的使命</h2>
+            <div class="section-header">
+              <span class="section-badge">我们的理念</span>
+              <h2 class="section-title">使命与愿景</h2>
+              <div class="title-separator"></div>
+            </div>
             <div class="mission-content">
               <div class="mission-text fade-in">
                 <p>
-                  理智先锋娱乐互动工作室致力于将科学教育与游戏娱乐相结合，通过沉浸式体验让玩家在享受游戏乐趣的同时，获取知识，激发对科学的热情。
+                  理智先锋游戏工作室致力于将科学教育与游戏娱乐相结合，通过沉浸式体验让玩家在享受游戏乐趣的同时，获取知识，激发对科学的热情。
                 </p>
                 <p>
                   我们相信，游戏不仅是一种娱乐方式，更是传递知识、传承文化的重要媒介。通过精心设计的游戏场景和互动体验，我们希望让玩家在虚拟世界中探索科学奥秘，感受历史魅力。
@@ -43,19 +62,87 @@
                 <p>
                   《理科生穿越之旅——与北宋沈括的故事》是我们的首款作品，它融合了物理学知识、历史文化和游戏互动，为玩家提供了一次独特的科学冒险之旅。
                 </p>
+                <div class="mission-stats">
+                  <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-text">游戏关卡</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-text">物理知识点</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-text">测试用户</span>
+                  </div>
+                </div>
               </div>
               <div class="mission-image fade-in delay-1">
                 <div class="image-placeholder">工作室理念</div>
+                <div class="image-overlay"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-shape right"></div>
+        </section>
+
+        <!-- 技术栈 -->
+        <section class="section section-tech">
+          <div class="bg-shape left"></div>
+          <div class="container">
+            <div class="section-header">
+              <span class="section-badge">核心能力</span>
+              <h2 class="section-title">我们的技术栈</h2>
+              <div class="title-separator"></div>
+            </div>
+            <div class="tech-stack-container">
+              <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="ri-gamepad-line"></i></div>
+                <h3>游戏引擎</h3>
+                <p>Unity 3D / Unreal Engine</p>
+              </div>
+              <div class="tech-card fade-in delay-1">
+                <div class="tech-icon">
+                  <i class="ri-code-s-slash-line"></i>
+                </div>
+                <h3>编程语言</h3>
+                <p>C# / C++ / JavaScript</p>
+              </div>
+              <div class="tech-card fade-in delay-2">
+                <div class="tech-icon"><i class="ri-artboard-2-line"></i></div>
+                <h3>美术设计</h3>
+                <p>Photoshop / Blender / Maya</p>
+              </div>
+              <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="ri-music-2-line"></i></div>
+                <h3>音效制作</h3>
+                <p>FL Studio / Adobe Audition</p>
+              </div>
+              <div class="tech-card fade-in delay-1">
+                <div class="tech-icon"><i class="ri-html5-line"></i></div>
+                <h3>Web开发</h3>
+                <p>HTML5 / CSS3 / Vue.js</p>
+              </div>
+              <div class="tech-card fade-in delay-2">
+                <div class="tech-icon">
+                  <i class="ri-customer-service-2-line"></i>
+                </div>
+                <h3>用户体验</h3>
+                <p>用户调研 / 用户测试 / 反馈优化</p>
               </div>
             </div>
           </div>
         </section>
 
         <!-- 团队成员 -->
-        <section class="section section-dark">
+        <section id="team" class="section section-team">
           <div class="container">
-            <h2 class="section-title">团队成员</h2>
-            <p class="section-subtitle">优秀的团队，创造非凡的作品</p>
+            <div class="section-header">
+              <span class="section-badge">精英团队</span>
+              <h2 class="section-title">团队成员</h2>
+              <div class="title-separator"></div>
+              <p class="section-subtitle">优秀的团队，创造非凡的作品</p>
+            </div>
             <div class="team-container">
               <div class="team-leader fade-in">
                 <a
@@ -134,16 +221,92 @@
               </div>
             </div>
           </div>
+          <div class="bg-shape right"></div>
+        </section>
+
+        <!-- 创作历程 -->
+        <section class="section section-timeline">
+          <div class="container">
+            <div class="section-header">
+              <span class="section-badge">开发之路</span>
+              <h2 class="section-title">创作历程</h2>
+              <div class="title-separator"></div>
+            </div>
+            <div class="timeline-container">
+              <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                  <div class="timeline-date">2023年9月</div>
+                  <h3>项目启动</h3>
+                  <p>
+                    确定游戏主题和核心玩法，收集相关历史资料和物理学知识点，制定开发计划。
+                  </p>
+                </div>
+                <div class="timeline-point"></div>
+              </div>
+
+              <div class="timeline-item fade-in delay-1">
+                <div class="timeline-content">
+                  <div class="timeline-date">2023年11月</div>
+                  <h3>原型开发</h3>
+                  <p>
+                    完成游戏基本原型，实现核心玩法和关键教学场景，进行内部测试和优化。
+                  </p>
+                </div>
+                <div class="timeline-point"></div>
+              </div>
+
+              <div class="timeline-item fade-in delay-2">
+                <div class="timeline-content">
+                  <div class="timeline-date">2024年2月</div>
+                  <h3>Alpha测试</h3>
+                  <p>
+                    邀请目标受众进行游戏测试，收集反馈，优化游戏体验和教育内容。
+                  </p>
+                </div>
+                <div class="timeline-point"></div>
+              </div>
+
+              <div class="timeline-item fade-in delay-3">
+                <div class="timeline-content">
+                  <div class="timeline-date">2024年5月</div>
+                  <h3>Beta测试</h3>
+                  <p>扩大测试范围，优化游戏性能和用户界面，完善游戏内容。</p>
+                </div>
+                <div class="timeline-point"></div>
+              </div>
+
+              <div class="timeline-item fade-in delay-4">
+                <div class="timeline-content">
+                  <div class="timeline-date">2025年初</div>
+                  <h3>正式发布</h3>
+                  <p>
+                    游戏正式上线，开始推广营销，收集用户反馈准备后续更新和优化。
+                  </p>
+                </div>
+                <div class="timeline-point"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-shape left"></div>
         </section>
 
         <!-- 我们的项目 -->
-        <section class="section">
+        <section id="projects" class="section section-projects">
           <div class="container">
-            <h2 class="section-title">我们的项目</h2>
+            <div class="section-header">
+              <span class="section-badge">精品力作</span>
+              <h2 class="section-title">我们的项目</h2>
+              <div class="title-separator"></div>
+            </div>
             <div class="project-showcase fade-in">
               <div class="project-card">
                 <div class="project-image">
                   <div class="image-placeholder">游戏封面</div>
+                  <div class="project-tags">
+                    <span>教育</span>
+                    <span>历史</span>
+                    <span>科学</span>
+                  </div>
                 </div>
                 <div class="project-info">
                   <h3>理科生穿越之旅——与北宋沈括的故事</h3>
@@ -153,6 +316,20 @@
                   <p>
                     游戏中的科学原理均基于真实的物理学知识，历史背景则参考了《梦溪笔谈》等史料，旨在让玩家在有趣的游戏体验中学习科学知识，感受中国古代科技的魅力。
                   </p>
+                  <div class="project-features">
+                    <div class="feature-item">
+                      <i class="ri-game-line"></i>
+                      <span>解谜冒险</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="ri-book-open-line"></i>
+                      <span>历史故事</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="ri-brain-line"></i>
+                      <span>科学教育</span>
+                    </div>
+                  </div>
                   <a href="index.html#download" class="btn btn-primary"
                     >了解更多</a
                   >
@@ -160,18 +337,23 @@
               </div>
             </div>
           </div>
+          <div class="bg-shape right"></div>
         </section>
 
         <!-- 联系我们 -->
         <section class="section section-contact">
           <div class="container">
-            <h2 class="section-title">联系我们</h2>
+            <div class="section-header">
+              <span class="section-badge">取得联系</span>
+              <h2 class="section-title">联系我们</h2>
+              <div class="title-separator"></div>
+            </div>
             <div class="contact-content fade-in">
               <div class="contact-methods">
                 <div class="contact-method">
                   <i class="ri-mail-line"></i>
                   <h3>电子邮件</h3>
-                  <p>有这玩意吗？</p>
+                  <p>info@rationalstudio.cn</p>
                 </div>
                 <div class="contact-method">
                   <i class="ri-map-pin-line"></i>
@@ -181,28 +363,58 @@
                 <div class="contact-method">
                   <i class="ri-customer-service-2-line"></i>
                   <h3>客服热线</h3>
-                  <p>有这玩意吗？</p>
+                  <p>400-123-4567</p>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="contact-cta">
+            <h3>准备好与我们合作了吗？</h3>
+            <a href="#" class="btn btn-primary">立即咨询</a>
           </div>
         </section>
       </main>
 
       <!-- 页脚区域 -->
       <footer class="footer">
-        <div class="container">
-          <div class="footer-content">
-            <p>&copy; 2025 理智先锋娱乐互动工作室. 保留所有权利。</p>
-            <div class="footer-links">
-              <a href="404.html"
-                ><i class="ri-shield-check-line"></i> 隐私政策</a
-              >
-              <a href="404.html"
-                ><i class="ri-file-list-3-line"></i> 使用条款</a
-              >
-              <a href="index.html"><i class="ri-home-line"></i> 返回首页</a>
+        <div class="footer-top">
+          <div class="container">
+            <div class="footer-content">
+              <div class="footer-brand">
+                <h3>理智先锋游戏工作室</h3>
+                <p>为教育与娱乐创造无限可能</p>
+                <div class="footer-social">
+                  <a href="#"><i class="ri-bilibili-line"></i></a>
+                  <a href="#"><i class="ri-wechat-line"></i></a>
+                  <a href="#"><i class="ri-weibo-line"></i></a>
+                  <a href="#"><i class="ri-github-fill"></i></a>
+                </div>
+              </div>
+              <div class="footer-links-group">
+                <div class="footer-links">
+                  <h4>导航</h4>
+                  <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#team">团队</a></li>
+                    <li><a href="#">博客</a></li>
+                  </ul>
+                </div>
+                <div class="footer-links">
+                  <h4>法律</h4>
+                  <ul>
+                    <li><a href="404.html">隐私政策</a></li>
+                    <li><a href="404.html">使用条款</a></li>
+                    <li><a href="404.html">Cookie政策</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container">
+            <p>&copy; 2025 理智先锋游戏工作室. 保留所有权利。</p>
           </div>
         </div>
       </footer>
@@ -210,5 +422,48 @@
 
     <script src="js/script.js"></script>
     <script src="js/about.js"></script>
+    <script>
+      // 为新添加的元素添加滚动动画
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // 观察所有需要淡入动画的元素
+        document
+          .querySelectorAll(
+            ".tech-card, .timeline-item, .project-card, .mission-stats, .contact-method, .section-header"
+          )
+          .forEach((el) => {
+            observer.observe(el);
+          });
+
+        // 创建粒子效果
+        const heroSection = document.querySelector(".hero-particles");
+        if (heroSection) {
+          for (let i = 0; i < 50; i++) {
+            const particle = document.createElement("span");
+            particle.classList.add("particle");
+            particle.style.left = Math.random() * 100 + "%";
+            particle.style.top = Math.random() * 100 + "%";
+            particle.style.width = Math.random() * 10 + 1 + "px";
+            particle.style.height = particle.style.width;
+            particle.style.animationDuration = Math.random() * 10 + 8 + "s";
+            particle.style.animationDelay = Math.random() * 5 + "s";
+            heroSection.appendChild(particle);
+          }
+        }
+      });
+    </script>
   </body>
 </html>
