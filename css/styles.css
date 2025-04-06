@@ -5,19 +5,19 @@
   box-sizing: border-box;
 }
 
-/* 基础样式 */
+/* 基础样式 - 古风主题色调 */
 :root {
-  --primary-color: #6366f1;
-  --primary-dark: #4f46e5;
-  --secondary-color: #ec4899;
-  --secondary-dark: #db2777;
-  --dark-color: #0f172a;
-  --medium-dark: #1e293b;
-  --light-color: #f8fafc;
-  --accent-color: #06b6d4;
-  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  --gradient-secondary: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
-  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  --primary-color: #8C3826; /* 朱砂红 */
+  --primary-dark: #6A2915; /* 深朱砂红 */
+  --secondary-color: #DAA520; /* 金赤色 */
+  --secondary-dark: #B8860B; /* 深金色 */
+  --dark-color: #2E271C; /* 墨黑 */
+  --medium-dark: #3E3A2E; /* 玄色 */
+  --light-color: #F8F3E9; /* 宣纸色 */
+  --accent-color: #507D7E; /* 青碧色 */
+  --gradient-primary: linear-gradient(135deg, #8C3826 0%, #C1614E 100%);
+  --gradient-secondary: linear-gradient(135deg, #DAA520 0%, #D4AF37 100%);
+  --gradient-dark: linear-gradient(135deg, #2E271C 0%, #3E3A2E 100%);
   --gradient-glass: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1) 0%,
@@ -29,13 +29,20 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-primary: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
-  --shadow-secondary: 0 10px 25px -5px rgba(236, 72, 153, 0.5);
+  --shadow-primary: 0 10px 25px -5px rgba(140, 56, 38, 0.5);
+  --shadow-secondary: 0 10px 25px -5px rgba(218, 165, 32, 0.5);
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --border-radius: 16px;
+  --border-radius: 8px; /* 减小圆角，使设计更古朴 */
   --will-change-opacity: opacity;
   --will-change-transform: transform;
+}
+
+/* 添加古风字体 */
+@font-face {
+  font-family: "FZXS";
+  src: url("https://static.fonts.net/fonts/fzxinshusong.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
@@ -45,8 +52,8 @@
 }
 
 body {
-  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "FZXS", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", 
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.6;
   color: var(--dark-color);
   background-color: var(--light-color);
@@ -67,12 +74,12 @@ body::before {
   height: 100%;
   background: radial-gradient(
       circle at 10% 10%,
-      rgba(99, 102, 241, 0.05),
+      rgba(140, 56, 38, 0.05),
       transparent 400px
     ),
     radial-gradient(
       circle at 90% 90%,
-      rgba(236, 72, 153, 0.05),
+      rgba(218, 165, 32, 0.05),
       transparent 400px
     );
   z-index: -1;
@@ -158,7 +165,7 @@ img {
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 15px 30px rgba(140, 56, 38, 0.4);
 }
 
 .btn-download {
@@ -172,7 +179,7 @@ img {
 
 .btn-download:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 15px 30px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 15px 30px rgba(218, 165, 32, 0.4);
 }
 
 .btn-download i {
@@ -261,7 +268,7 @@ img {
   overflow: hidden;
   will-change: var(--will-change-transform), box-shadow;
   height: 100%;
-  border: 1px solid rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(140, 56, 38, 0.1);
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -270,7 +277,7 @@ img {
 .chapter-card:hover {
   transform: translateY(-7px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(99, 102, 241, 0.3);
+  border-color: rgba(140, 56, 38, 0.3);
 }
 
 .chapter-card:nth-child(1),
@@ -296,7 +303,7 @@ img {
   align-self: flex-start;
   position: relative;
   z-index: 2;
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(140, 56, 38, 0.3);
 }
 
 .chapter-card h3 {
@@ -325,14 +332,14 @@ img {
   right: -10px;
   font-size: 140px;
   font-weight: 800;
-  color: rgba(99, 102, 241, 0.06);
+  color: rgba(140, 56, 38, 0.06);
   line-height: 1;
   z-index: 0;
   transition: var(--transition-smooth);
 }
 
 .chapter-card:hover::before {
-  color: rgba(99, 102, 241, 0.1);
+  color: rgba(140, 56, 38, 0.1);
   transform: translateY(-5px) scale(1.05);
 }
 
@@ -344,7 +351,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), transparent);
+  background: linear-gradient(135deg, rgba(140, 56, 38, 0.03), transparent);
   z-index: 1;
   opacity: 0;
   transition: var(--transition-smooth);
@@ -399,7 +406,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%238C3826' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
     repeat;
   pointer-events: none;
 }
@@ -470,7 +477,7 @@ img {
 /* 英雄区域样式 */
 .hero-section {
   height: 100vh;
-  background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)),
+  background: linear-gradient(rgba(46, 39, 28, 0.7), rgba(46, 39, 28, 0.8)),
     url("../images/hero-bg.jpg");
   background-size: cover;
   background-position: center;
@@ -488,7 +495,7 @@ img {
   height: 100%;
   background: radial-gradient(
     circle at center,
-    rgba(99, 102, 241, 0.2),
+    rgba(140, 56, 38, 0.2),
     transparent 50%
   );
   opacity: 0.8;
@@ -627,15 +634,15 @@ img {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(99, 102, 241, 0.2),
-    rgba(236, 72, 153, 0.2)
+    rgba(140, 56, 38, 0.2),
+    rgba(218, 165, 32, 0.2)
   );
   pointer-events: none;
 }
 
 .image-placeholder {
   height: 500px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #8C3826, #C1614E);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -691,7 +698,7 @@ img {
   font-size: 48px;
   margin-bottom: 24px;
   color: var(--secondary-color);
-  background: rgba(236, 72, 153, 0.1);
+  background: rgba(218, 165, 32, 0.1);
   width: 80px;
   height: 80px;
   display: flex;
@@ -782,7 +789,7 @@ img {
 
 /* 下载区域样式 */
 .section-download {
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)),
+  background: linear-gradient(rgba(46, 39, 28, 0.85), rgba(46, 39, 28, 0.95)),
     url("../images/download-bg.jpg");
   background-size: cover;
   background-position: center;
@@ -801,12 +808,12 @@ img {
   height: 100%;
   background: radial-gradient(
       circle at 20% 20%,
-      rgba(236, 72, 153, 0.15),
+      rgba(218, 165, 32, 0.15),
       transparent 40%
     ),
     radial-gradient(
       circle at 80% 80%,
-      rgba(99, 102, 241, 0.15),
+      rgba(140, 56, 38, 0.15),
       transparent 40%
     );
 }
