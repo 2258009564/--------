@@ -1,6 +1,66 @@
 // 关于我们页面的专用脚本
 
 document.addEventListener("DOMContentLoaded", function () {
+  // 设置当前页面为关于页面
+  const setupNavigation = () => {
+    // 获取当前页面路径
+    const currentPath = window.location.pathname;
+
+    // 处理顶部导航栏
+    const header = document.querySelector(".header");
+    if (header) {
+      // 为导航链接添加激活状态
+      const navLinks = document.querySelectorAll(".nav-link");
+      navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+
+        // 设置关于页面的导航为活跃状态 - 修复高亮逻辑
+        if (href && href.includes("about.html")) {
+          link.classList.add("active-link");
+          // 清除可能的hover效果
+          link.classList.remove("ancient-hover");
+          // 确保立即下载按钮不会获得普通的active-link样式
+          if (link.classList.contains("nav-highlight")) {
+            link.classList.remove("active-link");
+          }
+        } else {
+          link.classList.remove("active-link");
+        }
+
+        // 添加悬停效果
+        link.addEventListener("mouseenter", () => {
+          if (!link.classList.contains("active-link")) {
+            link.classList.add("ancient-hover");
+          }
+        });
+
+        link.addEventListener("mouseleave", () => {
+          link.classList.remove("ancient-hover");
+        });
+      });
+
+      // 添加滚动时的样式变化
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (window.scrollY > 20) {
+            header.classList.add("scrolled");
+            header.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.1)";
+            header.style.backdropFilter = "blur(8px)";
+          } else {
+            header.classList.remove("scrolled");
+            header.style.boxShadow = "none";
+            header.style.backdropFilter = "blur(0px)";
+          }
+        },
+        { passive: true }
+      );
+    }
+  };
+
+  // 初始化导航设置
+  setupNavigation();
+
   // 为团队成员卡片添加悬停效果
   const teamCards = document.querySelectorAll(".team-member-card");
 
@@ -26,6 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
         card.style.transition = "transform 0.1s ease";
 
+        // 添加古风风格的光影效果
+        const lightIntensity = 0.03;
+        card.style.backgroundImage = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,${lightIntensity}), transparent 40%)`;
+
         rafId = null;
       });
     });
@@ -37,7 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       card.style.transform = "";
-      card.style.transition = "transform 0.3s ease";
+      card.style.transition = "transform 0.3s ease, background-image 0.3s ease";
+      card.style.backgroundImage = "";
     });
   });
 
@@ -109,5 +174,44 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     });
+  });
+
+  // 添加页面淡入效果
+  const pageElements = document.querySelectorAll(
+    ".section, .team-member-card, .project-card, .about-header-content"
+  );
+
+  // 使用Intersection Observer添加淡入效果
+  const fadeInObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          fadeInObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px",
+    }
+  );
+
+  pageElements.forEach((el) => {
+    el.classList.add("fade-in");
+    fadeInObserver.observe(el);
+  });
+
+  // 页面加载完成后的初始动画
+  requestAnimationFrame(() => {
+    document.body.classList.add("loaded");
+
+    // 添加页面头部的初始可见性
+    setTimeout(() => {
+      const aboutHeader = document.querySelector(".about-header-content");
+      if (aboutHeader) {
+        aboutHeader.classList.add("visible");
+      }
+    }, 300);
   });
 });

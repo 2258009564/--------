@@ -9,20 +9,23 @@
   width: 100%;
 }
 
-/* 英雄区域样式 */
+/* 英雄区域样式 - 更加扁平化 */
 .about-hero {
   height: 50vh;
   min-height: 400px;
-  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
-    url("../images/about-hero.jpg");
+  background: linear-gradient(rgba(40, 30, 20, 0.85), rgba(40, 30, 20, 0.9)),
+    url("https://img.freepik.com/free-vector/chinese-painting-background_52683-63125.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  color: var(--color-text-light);
   position: relative;
+  border-bottom: 2px solid var(--color-primary-light);
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .about-hero::before {
@@ -32,8 +35,8 @@
   height: 100%;
   background: radial-gradient(
     circle at center,
-    rgba(99, 102, 241, 0.2),
-    transparent 60%
+    rgba(212, 167, 106, 0.15),
+    transparent 70%
   );
   opacity: 0.6;
 }
@@ -42,49 +45,75 @@
   position: relative;
   z-index: 1;
   max-width: 800px;
-  padding: 0 20px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(212, 167, 106, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .about-hero-content h2 {
-  font-size: 48px;
-  font-weight: 800;
+  font-size: 46px;
+  font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: -1px;
+  color: var(--color-primary-light);
+  font-family: var(--font-title);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .about-hero-content p {
   font-size: 20px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
-/* 使命区域样式 */
+/* 使命区域样式 - 更加扁平化 */
 .mission-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  gap: 40px;
   align-items: center;
 }
 
 .mission-text p {
   margin-bottom: 20px;
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: justify;
 }
 
 .mission-image {
   position: relative;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  transform: perspective(1000px) rotateY(3deg);
-  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transform: perspective(1000px) rotateY(1deg);
+  transition: transform 0.5s ease;
+  border: 1px solid rgba(212, 167, 106, 0.3);
+  height: 350px;
 }
 
 .mission-image:hover {
   transform: perspective(1000px) rotateY(0);
 }
 
-/* 团队成员样式 */
+.mission-image .image-placeholder {
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 团队成员样式 - 恢复更具立体感的效果 */
 .team-container {
   display: flex;
   flex-direction: column;
@@ -103,21 +132,80 @@
   justify-content: center;
 }
 
+/* 将团队成员卡片改为链接样式，但保留立体感 */
 .team-member-card {
-  background: var(--gradient-glass);
+  display: block;
+  background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: var(--border-radius);
   padding: 30px;
   text-align: center;
-  transition: var(--transition);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none; /* 移除链接下划线 */
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+}
+
+/* 团队成员卡片高亮效果 - 恢复立体感 */
+.team-card-highlight {
+  box-shadow: 0 15px 35px rgba(212, 167, 106, 0.3);
+  border: 1px solid rgba(212, 167, 106, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.team-card-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 90, 43, 0.3),
+    rgba(212, 167, 106, 0.2)
+  );
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* 鼠标悬停光晕效果 */
+.team-card-highlight::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 167, 106, 0.4),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: -1;
+  transform: scale(0.5);
+}
+
+.team-card-highlight:hover::after {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.6s ease, transform 1.2s ease;
 }
 
 .team-member-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-15px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(212, 167, 106, 0.6);
 }
 
 .team-member-avatar {
@@ -126,7 +214,16 @@
   margin: 0 auto 20px;
   border-radius: 50%;
   overflow: hidden;
-  border: 5px solid rgba(255, 255, 255, 0.1);
+  border: 5px solid rgba(212, 167, 106, 0.2);
+  transition: all 0.5s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transform: translateZ(20px);
+}
+
+.team-card-highlight:hover .team-member-avatar {
+  border-color: rgba(212, 167, 106, 0.8);
+  transform: scale(1.1) translateZ(30px);
+  box-shadow: 0 15px 35px rgba(212, 167, 106, 0.4);
 }
 
 .avatar-placeholder {
@@ -134,8 +231,8 @@
   height: 100%;
   background: linear-gradient(
     45deg,
-    var(--primary-color),
-    var(--secondary-color)
+    var(--color-primary),
+    var(--color-primary-light)
   );
   display: flex;
   align-items: center;
@@ -149,113 +246,169 @@
   font-size: 22px;
   margin-bottom: 10px;
   font-weight: 700;
+  color: var(--color-primary-light);
+  transition: all 0.5s ease;
+  transform: translateZ(15px);
+}
+
+.team-card-highlight:hover h3 {
+  transform: scale(1.1) translateZ(25px);
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .team-member-title {
   font-size: 16px;
   opacity: 0.8;
+  color: var(--color-text-light);
+  transform: translateZ(10px);
 }
 
-/* 项目展示样式 */
+/* 添加鼠标悬停时的链接提示 */
+.team-member-card:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z' fill='rgba(212,167,106,0.8)'/%3E%3C/svg%3E");
+  background-size: contain;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.team-member-card:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 项目展示样式 - 更加扁平化 */
 .project-showcase {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .project-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  background: white;
-  border-radius: var(--border-radius);
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(212, 167, 106, 0.2);
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
   height: 100%;
   min-height: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 90, 43, 0.05),
+    rgba(212, 167, 106, 0.1)
+  );
 }
 
 .project-image .image-placeholder {
   height: 100%;
   background: linear-gradient(
     45deg,
-    var(--primary-color),
-    var(--secondary-color)
+    var(--color-primary),
+    var(--color-primary-light)
   );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .project-info {
-  padding: 30px;
+  padding: 25px;
 }
 
 .project-info h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: var(--primary-color);
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--color-primary);
   font-weight: 700;
 }
 
 .project-info p {
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 15px;
+  font-size: 15px;
   line-height: 1.7;
+  text-align: justify;
 }
 
 .project-info .btn {
-  margin-top: 20px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
 }
 
-/* 联系我们样式 */
+/* 联系我们样式 - 更加扁平化 */
 .section-contact {
-  background-color: var(--light-color);
+  background-color: rgba(248, 244, 233, 0.9);
+  background-image: url("https://img.freepik.com/free-vector/chinese-pattern-background_53876-90035.jpg");
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
 }
 
 .contact-content {
-  margin-top: 40px;
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-methods {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 25px;
 }
 
 .contact-method {
-  background: white;
-  padding: 30px;
-  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 8px;
   text-align: center;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(212, 167, 106, 0.2);
 }
 
 .contact-method:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .contact-method i {
-  font-size: 48px;
-  color: var(--primary-color);
-  margin-bottom: 20px;
+  font-size: 42px;
+  color: var(--color-primary);
+  margin-bottom: 15px;
 }
 
 .contact-method h3 {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 10px;
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
 .contact-method p {
-  font-size: 16px;
-  color: var(--medium-dark);
+  font-size: 15px;
+  color: var(--color-text);
 }
 
 /* 响应式调整 */
@@ -266,7 +419,7 @@
   }
 
   .about-hero-content h2 {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 
@@ -276,7 +429,7 @@
   }
 
   .about-hero-content h2 {
-    font-size: 32px;
+    font-size: 30px;
   }
 
   .team-member-card {
@@ -284,8 +437,8 @@
   }
 
   .team-member-avatar {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
 }
 

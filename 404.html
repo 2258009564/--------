@@ -25,6 +25,7 @@
     <!-- 引入Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
     <style>
+      /* 404页面自定义样式 */
       .error-container {
         height: 100vh;
         display: flex;
@@ -32,7 +33,7 @@
         justify-content: center;
         text-align: center;
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-          url("images/hero/ancient-scroll-bg.jpg");
+          url("https://img.freepik.com/free-vector/chinese-painting-background_52683-63125.jpg");
         background-size: cover;
         background-position: center;
         position: relative;
@@ -46,7 +47,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("images/ui/pattern-overlay.png");
+        background-image: url("https://img.freepik.com/free-vector/chinese-pattern-background_53876-90035.jpg");
         background-size: cover;
         opacity: 0.15;
         pointer-events: none;
@@ -56,7 +57,7 @@
         position: absolute;
         width: 300px;
         height: 300px;
-        background-image: url("images/ui/ink-splash.png");
+        background-image: url("https://img.freepik.com/free-vector/traditional-chinese-painting-landscape_52683-63367.jpg");
         background-size: contain;
         background-repeat: no-repeat;
         opacity: 0.2;
@@ -78,14 +79,14 @@
       .error-content {
         max-width: 700px;
         padding: 60px;
-        background-color: rgba(248, 243, 233, 0.9);
-        border-radius: 8px;
+        background-color: rgba(248, 244, 233, 0.9);
+        border-radius: var(--border-radius);
         backdrop-filter: blur(5px);
         position: relative;
-        box-shadow: var(--shadow-md);
-        border: 2px solid var(--primary-color);
+        box-shadow: var(--shadow-large);
+        border: 2px solid var(--color-primary-light);
         z-index: 1;
-        font-family: "Noto Serif SC", serif;
+        font-family: var(--font-primary);
       }
 
       /* 卷轴效果 */
@@ -93,34 +94,45 @@
       .error-content::after {
         content: "";
         position: absolute;
-        width: 50px;
+        width: 30px;
         height: 100%;
         top: 0;
-        background-image: url("images/ui/scroll-edge.png");
-        background-size: contain;
-        background-repeat: repeat-y;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary-light),
+          var(--color-primary)
+        );
+        opacity: 0.3;
       }
 
       .error-content::before {
-        left: -15px;
+        left: -5px;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
       }
 
       .error-content::after {
-        right: -15px;
-        transform: scaleX(-1);
+        right: -5px;
+        border-top-right-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
       }
 
       .error-code {
         font-size: 120px;
         font-weight: 700;
         margin-bottom: 20px;
-        background: var(--gradient-primary);
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-light),
+          var(--color-primary)
+        );
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        font-family: "Ma Shan Zheng", cursive;
+        font-family: var(--font-title);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         position: relative;
+        display: inline-block;
       }
 
       .error-code::after {
@@ -131,30 +143,36 @@
         transform: translateX(-50%);
         width: 100px;
         height: 2px;
-        background: var(--gradient-primary);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-primary),
+          transparent
+        );
       }
 
       .error-message {
         font-size: 32px;
         margin-bottom: 30px;
-        color: var(--primary-dark);
+        color: var(--color-secondary);
         font-weight: 600;
         letter-spacing: 1px;
       }
 
       .error-description {
-        color: var(--dark-color);
+        color: var(--color-text);
         margin-bottom: 40px;
         font-size: 18px;
         line-height: 1.6;
         position: relative;
+        padding: 0 30px;
       }
 
       .error-description::before,
       .error-description::after {
         content: "「";
         font-size: 24px;
-        color: var(--primary-color);
+        color: var(--color-primary);
         position: absolute;
         opacity: 0.6;
       }
@@ -184,71 +202,131 @@
         right: -20px;
         width: 120px;
         height: 120px;
-        background-image: url("images/ui/ancient-seal.png");
+        background-color: var(--color-primary);
         background-size: contain;
         background-repeat: no-repeat;
-        opacity: 0.3;
+        opacity: 0.15;
         transform: rotate(15deg);
+        border-radius: 50%;
       }
 
-      /* 按钮古风样式 */
-      .btn {
-        position: relative;
-        padding: 12px 30px;
-        border-radius: 4px;
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration: none;
-        text-align: center;
-        transition: all 0.3s ease;
-        overflow: hidden;
-        display: inline-flex;
-        align-items: center;
+      /* 水墨加载动画 */
+      .ink-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-bg);
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        cursor: pointer;
-        border: none;
-        outline: none;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+
+      body.loaded .ink-loading-overlay {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .ink-splash {
+        width: 120px;
+        height: 120px;
+        background-color: var(--color-primary);
+        opacity: 0.8;
+        border-radius: 50%;
+        animation: inkSpread 2s infinite alternate;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ink-splash::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://img.freepik.com/free-vector/chinese-pattern-background_53876-90035.jpg");
+        background-size: cover;
+        opacity: 0.1;
+        border-radius: 50%;
+      }
+
+      .loading-text {
+        margin-top: 20px;
+        font-size: 18px;
+        color: var(--color-secondary);
+        font-family: var(--font-primary);
+      }
+
+      @keyframes inkSpread {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.3;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0.8;
+        }
+      }
+
+      /* 返回首页按钮样式 */
+      .btn-primary {
+        background: var(--color-primary);
+        color: var(--color-text-light);
+        box-shadow: var(--shadow-normal);
+      }
+
+      .btn-primary:hover {
+        background: var(--color-secondary);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-large);
+      }
+
+      .btn-download {
+        background: rgba(139, 90, 43, 0.8);
+        color: var(--color-text-light);
+        box-shadow: var(--shadow-normal);
+      }
+
+      .btn-download:hover {
+        background: rgba(90, 57, 33, 0.9);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-large);
       }
 
       .btn i {
         margin-right: 8px;
       }
 
-      .btn::after {
-        content: "";
+      /* 添加古风装饰元素 */
+      .cloud-decorator {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("images/ui/paper-texture.png");
-        background-size: cover;
-        opacity: 0.1;
-        pointer-events: none;
+        background-image: url("https://img.freepik.com/free-vector/chinese-cloud-pattern_53876-88467.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 0;
       }
 
-      .btn-primary {
-        background-color: var(--primary-color);
-        color: white;
-        box-shadow: 0 4px 15px rgba(140, 56, 38, 0.3);
+      .cloud-decorator.top-right {
+        top: 10%;
+        right: 5%;
+        width: 200px;
+        height: 150px;
+        transform: rotate(10deg);
       }
 
-      .btn-primary:hover {
-        background-color: var(--primary-dark);
-        transform: translateY(-2px);
+      .cloud-decorator.bottom-left {
+        bottom: 5%;
+        left: 5%;
+        width: 180px;
+        height: 130px;
+        transform: rotate(-15deg);
       }
 
-      .btn-download {
-        background-color: var(--secondary-color);
-        color: white;
-        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
-      }
-
-      .btn-download:hover {
-        background-color: var(--secondary-dark);
-        transform: translateY(-2px);
-      }
-
+      /* 响应式调整 */
       @media (max-width: 768px) {
         .error-code {
           font-size: 80px;
@@ -268,54 +346,6 @@
           gap: 15px;
         }
       }
-
-      /* 水墨加载动画 */
-      .ink-loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--light-color);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-      }
-
-      body.loaded .ink-loading-overlay {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .ink-splash {
-        width: 120px;
-        height: 120px;
-        background-image: url("images/ui/ink-loading.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        animation: inkSpread 2s infinite alternate;
-      }
-
-      .loading-text {
-        margin-top: 20px;
-        font-size: 18px;
-        color: var(--dark-color);
-        font-family: "ZCOOL XiaoWei", serif;
-      }
-
-      @keyframes inkSpread {
-        0% {
-          transform: scale(0.8);
-          opacity: 0.3;
-        }
-        100% {
-          transform: scale(1.2);
-          opacity: 0.8;
-        }
-      }
     </style>
   </head>
   <body class="ancient-theme">
@@ -328,6 +358,9 @@
     <div id="errorApp">
       <div class="error-container">
         <div class="ancient-pattern-overlay"></div>
+        <!-- 装饰性云朵元素 -->
+        <div class="cloud-decorator top-right"></div>
+        <div class="cloud-decorator bottom-left"></div>
         <!-- 装饰性水墨元素 -->
         <div class="ink-splash-decoration left"></div>
         <div class="ink-splash-decoration right"></div>
@@ -336,7 +369,7 @@
           <div class="error-code">肆零肆</div>
           <h1 class="error-message">迷失在时空的旅人</h1>
           <p class="error-description">
-            您似乎误入了时空的未知领域。这片区域可能尚未被探索，或已在历史长河中消逝。
+            您似乎误入了时空的未知领域。这片区域可能尚未被探索，或已在历史长河中消逝。让我们一同寻找回到主世界的路径。
           </p>
           <div class="error-actions">
             <a href="index.html" class="btn btn-primary">
@@ -369,6 +402,34 @@
           setTimeout(() => {
             document.body.classList.add("loaded");
           }, 800);
+
+          // 添加浮动装饰元素动画
+          const floatElements = () => {
+            const clouds = document.querySelectorAll(".cloud-decorator");
+
+            clouds.forEach((cloud, index) => {
+              const direction = index % 2 === 0 ? 1 : -1;
+              const delay = index * 500;
+
+              setTimeout(() => {
+                cloud.style.transition = "transform 3s ease-in-out";
+
+                setInterval(() => {
+                  cloud.style.transform = `translate(${
+                    5 * direction
+                  }px, ${5}px) rotate(${index * 10 + 5}deg)`;
+
+                  setTimeout(() => {
+                    cloud.style.transform = `translate(0, 0) rotate(${
+                      index * 10
+                    }deg)`;
+                  }, 1500);
+                }, 3000);
+              }, delay);
+            });
+          };
+
+          floatElements();
         },
       }).mount("#errorApp");
     </script>
