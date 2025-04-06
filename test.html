@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>梦溪奇缘 - 理科生与沈括的千年对话</title>
+    <link rel="stylesheet" href="css/test.css" />
+    <!-- 引入字体图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    />
+    <!-- 引入Google Fonts的古风字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 引入Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 头部区域 -->
+      <header class="header" :class="{ 'scrolled': isScrolled }">
+        <div class="container">
+          <h1 class="game-title">{{ shortGameTitle }}</h1>
+          <nav class="nav">
+            <ul>
+              <li><a href="#overview">游戏概述</a></li>
+              <li><a href="#features">游戏特色</a></li>
+              <li><a href="#system">系统需求</a></li>
+              <li><a href="#download" class="nav-highlight">立即下载</a></li>
+              <li><a href="about.html">关于我们</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- 主要内容区域 -->
+      <main>
+        <!-- 英雄区域 -->
+        <section class="hero-section">
+          <div class="container">
+            <div class="hero-content">
+              <h2>梦溪奇缘<br />与沈括的千年对话</h2>
+              <p class="hero-subtitle">
+                一卷《梦溪笔谈》开启时空之门，一段跨越千年的科学奇缘
+              </p>
+              <a href="#download" class="btn btn-primary"
+                ><i class="ri-download-cloud-2-line"></i> 开启奇缘</a
+              >
+            </div>
+          </div>
+          <div class="scroll-down">
+            <span>向下滑动探索</span>
+            <i class="ri-arrow-down-line"></i>
+          </div>
+        </section>
+
+        <!-- 游戏概述 -->
+        <section id="overview" class="section">
+          <div class="container">
+            <h2 class="section-title">游戏概述</h2>
+            <p class="section-subtitle">
+              一卷奇书，千年邂逅，共谱科学传奇
+            </p>
+            <div class="overview-content">
+              <div class="overview-text fade-in">
+                <p>
+                  《{{ gameTitle
+                  }}》乃是一款融汇古今、贯通文理之奇作。玩家将化身现代学子，因一卷《梦溪笔谈》而穿越千年，成为北宋科学巨擘沈括之门徒。此非寻常穿越，实为一场跨越时空的智慧对话。
+                </p>
+                <p>
+                  游戏之中，玩家将随沈括游历北宋山河，从汴京繁华到江南水乡，从宫廷秘阁到民间作坊。每至一处，皆可探究科学奥妙：观小孔成像之理，察磁针指南之性，究水利工程之法，测天文历算之精。沈括将亲授其毕生所学，玩家则需以现代科学知识相助，共解自然之谜。
+                </p>
+                <p>
+                  此游戏不仅重现《梦溪笔谈》中二十六门类之精华，更融入了中国传统文化的琴棋书画、诗词歌赋。玩家既可参与科举应试，又能结交苏轼、王安石等历史名人，体验北宋文人雅士的生活情趣。
+                </p>
+                <p>
+                  游戏场景皆依宋代画作精心构建，一砖一瓦皆考据史实，一草一木俱含诗意。配乐采用古琴、箫、琵琶等传统乐器演奏，营造出浓郁的古典氛围。
+                </p>
+                <p>
+                  今邀君共赴这场千年之约，与沈括同游科学殿堂，体验"格物致知"的真谛，探寻"天人合一"的智慧。
+                </p>
+              </div>
+              <div class="overview-image fade-in delay-2">
+                <div class="image-placeholder">《梦溪笔谈》书影与游戏场景</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 游戏特色 -->
+        <section id="features" class="section section-dark">
+          <div class="container">
+            <h2 class="section-title">游戏特色</h2>
+            <p class="section-subtitle">
+              七大特色，尽显宋风雅韵
+            </p>
+            <div class="features-grid">
+              <div
+                class="feature-card fade-in"
+                v-for="feature in features"
+                :key="feature.id"
+                :class="'delay-' + (feature.id % 3)"
+              >
+                <div class="feature-icon">
+                  <i :class="feature.iconClass"></i>
+                </div>
+                <h3>{{ feature.title }}</h3>
+                <p>{{ feature.description }}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 章节预览 -->
+        <section id="chapters" class="section">
+          <div class="container">
+            <h2 class="section-title">五章史诗</h2>
+            <p class="section-subtitle">
+              五段奇缘，五重境界
+            </p>
+            <div class="chapters-container">
+              <div class="chapter-card fade-in" data-number="壹">
+                <div class="chapter-number">第一章·缘起</div>
+                <h3>梦溪初遇</h3>
+                <p>
+                  一卷《梦溪笔谈》开启时空之门，现代学子与沈括初遇于梦溪园。从"阳燧照物"探究小孔成像之理，揭开穿越之谜的第一重面纱。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-1" data-number="贰">
+                <div class="chapter-number">第二章·问道</div>
+                <h3>光影玄机</h3>
+                <p>
+                  随沈括游历江南，于山水之间探究光学奥秘。从"鸢飞戾天"察影之成因，至"潭清疑水浅"究折射之理，完成《透光镜》篇的撰写。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-2" data-number="叁">
+                <div class="chapter-number">第三章·济世</div>
+                <h3>汴水长歌</h3>
+                <p>
+                  奉诏入汴京，参与治理黄河水患。运用"分层筑堰法"测量地形高低差，设计"水磨"、"水排"等机械，展现科学济世之能。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-1" data-number="肆">
+                <div class="chapter-number">第四章·悟真</div>
+                <h3>磁针指北</h3>
+                <p>
+                  归隐梦溪园，潜心著述。发现磁偏角现象，探究"方家以磁石磨针锋"之原理，与沈括共撰《梦溪笔谈》最具科学价值之篇章。
+                </p>
+              </div>
+              <div class="chapter-card fade-in delay-2" data-number="伍">
+                <div class="chapter-number">第五章·归程</div>
+                <h3>千年一梦</h3>
+                <p>
+                  协助沈括完成"十二气历"改革，在月圆之夜举行"科学雅集"。最终抉择：携科学典籍回归现代，或留北宋传承科学薪火？
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 系统需求 -->
+        <section id="system" class="section">
+          <div class="container">
+            <h2 class="section-title">系统需求</h2>
+            <p class="section-subtitle">
+              工欲善其事，必先利其器
+            </p>
+            <div class="requirements">
+              <div class="requirement-col fade-in">
+                <h3>基本配置</h3>
+                <ul>
+                  <li><strong>操作系统:</strong> Windows 10 64位</li>
+                  <li>
+                    <strong>处理器:</strong> Intel Core i5-4460 / AMD FX-6300
+                  </li>
+                  <li><strong>内存:</strong> 8 GB RAM</li>
+                  <li>
+                    <strong>显卡:</strong> NVIDIA GeForce GTX 760 / AMD Radeon
+                    R7 260x
+                  </li>
+                  <li><strong>DirectX:</strong> 版本 11</li>
+                  <li><strong>存储空间:</strong> 50 GB 可用空间</li>
+                </ul>
+              </div>
+              <div class="requirement-col fade-in delay-1">
+                <h3>雅致体验</h3>
+                <ul>
+                  <li><strong>操作系统:</strong> Windows 10/11 64位</li>
+                  <li>
+                    <strong>处理器:</strong> Intel Core i7-8700K / AMD Ryzen 5
+                    3600X
+                  </li>
+                  <li><strong>内存:</strong> 16 GB RAM</li>
+                  <li>
+                    <strong>显卡:</strong> NVIDIA GeForce RTX 2060 / AMD Radeon
+                    RX 5700
+                  </li>
+                  <li><strong>DirectX:</strong> 版本 12</li>
+                  <li><strong>存储空间:</strong> 50 GB SSD</li>
+                </ul>
+              </div>
+            </div>
+            <div class="recommendation fade-in delay-2">
+              <h4>特别提示：</h4>
+              <p>
+                为获得最佳体验，建议使用支持光线追踪的显卡，可完美呈现游戏中的光影效果，特别是小孔成像、水面折射等物理现象的实时渲染。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 下载区域 -->
+        <section id="download" class="section section-download">
+          <div class="container">
+            <h2 class="section-title">请君入梦</h2>
+            <div class="download-content">
+              <p class="download-poem">
+                梦溪一卷启千年<br>
+                科学奇缘今再现<br>
+                莫负良辰美景天<br>
+                下载同游共钻研
+              </p>
+              <div class="download-options">
+                <button @click="downloadGame" class="btn btn-download">
+                  <i class="ri-download-cloud-2-line"></i> 下载游戏
+                </button>
+                <span class="download-info"
+                  >版本: {{ gameVersion }} | 大小: {{ gameSize }}</span
+                >
+              </div>
+              <div class="qrcode-container fade-in delay-1">
+                <div class="qrcode-placeholder">手机扫描此处二维码</div>
+                <p>移动端亦可畅玩</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- 页脚区域 -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-poem">
+              <p>梦溪园里说科学</p>
+              <p>千年一瞬见真知</p>
+              <p>愿君得趣此中乐</p>
+              <p>不负古人著书时</p>
+            </div>
+            <div class="footer-info">
+              <p>&copy; 乙巳年 理智先锋娱乐互动工作室 谨制</p>
+              <div class="footer-links">
+                <a href="#"><i class="ri-shield-check-line"></i> 隐私条款</a>
+                <a href="#"><i class="ri-file-list-3-line"></i> 用户协议</a>
+                <a href="about.html"><i class="ri-team-line"></i> 关于我们</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+      const { createApp } = Vue;
+      
+      createApp({
+        data() {
+          return {
+            gameTitle: "梦溪奇缘：理科生与沈括的千年对话",
+            shortGameTitle: "梦溪奇缘",
+            gameVersion: "1.0.0",
+            gameSize: "15.8GB",
+            isScrolled: false,
+            features: [
+              {
+                id: 1,
+                title: "古法今用",
+                description: "30+个基于《梦溪笔谈》原著的科学实验，古今科学思维碰撞",
+                iconClass: "ri-flask-line"
+              },
+              {
+                id: 2,
+                title: "宋风雅韵",
+                description: "精细还原北宋风貌，从建筑服饰到生活细节，沉浸式体验",
+                iconClass: "ri-landscape-line"
+              },
+              {
+                id: 3,
+                title: "名士风流",
+                description: "与苏轼、王安石等历史名人互动，参与文人雅集",
+                iconClass: "ri-user-3-line"
+              },
+              {
+                id: 4,
+                title: "科学传承",
+                description: "独创"古今对话"系统，将现代科学知识融入古代语境",
+                iconClass: "ri-lightbulb-flash-line"
+              },
+              {
+                id: 5,
+                title: "物理模拟",
+                description: "真实物理引擎呈现古代科学现象，可互动实验装置",
+                iconClass: "ri-atom-line"
+              },
+              {
+                id: 6,
+                title: "多重结局",
+                description: "7种不同结局，取决于玩家的科学贡献与历史干预",
+                iconClass: "ri-map-2-line"
+              },
+              {
+                id: 7,
+                title: "文化传承",
+                description: "融入诗词、书法、绘画等传统文化元素",
+                iconClass: "ri-brush-line"
+              }
+            ]
+          };
+        },
+        methods: {
+          downloadGame() {
+            alert("感谢下载《梦溪奇缘》！即将开始下载...");
+            // 实际下载逻辑
+          },
+          handleScroll() {
+            this.isScrolled = window.scrollY > 50;
+          }
+        },
+        mounted() {
+          window.addEventListener("scroll", this.handleScroll);
+        },
+        beforeUnmount() {
+          window.removeEventListener("scroll", this.handleScroll);
+        }
+      }).mount("#app");
+    </script>
+  </body>
+</html>
