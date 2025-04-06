@@ -3,8 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - 页面未找到 - 荣耀战场</title>
+    <title>404 - 页面未找到</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <!-- 引入字体图标 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    />
+    <!-- 引入古风字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 引入中国传统字体 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=ZCOOL+QingKe+HuangYou&display=swap"
+      rel="stylesheet"
+    />
     <!-- 引入Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
     <style>
@@ -14,20 +31,85 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
-          url("../images/download-bg.jpg");
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+          url("images/hero/ancient-scroll-bg.jpg");
         background-size: cover;
         background-position: center;
+        position: relative;
+        overflow: hidden;
       }
-      
+
+      /* 古风装饰元素 */
+      .ancient-pattern-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("images/ui/pattern-overlay.png");
+        background-size: cover;
+        opacity: 0.15;
+        pointer-events: none;
+      }
+
+      .ink-splash-decoration {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background-image: url("images/ui/ink-splash.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.2;
+        filter: blur(2px);
+      }
+
+      .ink-splash-decoration.left {
+        top: 10%;
+        left: -50px;
+        transform: rotate(-45deg) scale(1.5);
+      }
+
+      .ink-splash-decoration.right {
+        bottom: 5%;
+        right: -50px;
+        transform: rotate(30deg) scale(1.8);
+      }
+
       .error-content {
         max-width: 700px;
-        padding: 50px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        backdrop-filter: blur(10px);
+        padding: 60px;
+        background-color: rgba(248, 243, 233, 0.9);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+        position: relative;
+        box-shadow: var(--shadow-md);
+        border: 2px solid var(--primary-color);
+        z-index: 1;
+        font-family: "Noto Serif SC", serif;
       }
-      
+
+      /* 卷轴效果 */
+      .error-content::before,
+      .error-content::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 100%;
+        top: 0;
+        background-image: url("images/ui/scroll-edge.png");
+        background-size: contain;
+        background-repeat: repeat-y;
+      }
+
+      .error-content::before {
+        left: -15px;
+      }
+
+      .error-content::after {
+        right: -15px;
+        transform: scaleX(-1);
+      }
+
       .error-code {
         font-size: 120px;
         font-weight: 700;
@@ -36,56 +118,240 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        font-family: "Ma Shan Zheng", cursive;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
       }
-      
+
+      .error-code::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: var(--gradient-primary);
+      }
+
       .error-message {
-        font-size: 28px;
+        font-size: 32px;
         margin-bottom: 30px;
-        color: white;
+        color: var(--primary-dark);
+        font-weight: 600;
+        letter-spacing: 1px;
       }
-      
+
       .error-description {
-        color: white;
-        opacity: 0.8;
-        margin-bottom: 30px;
+        color: var(--dark-color);
+        margin-bottom: 40px;
         font-size: 18px;
+        line-height: 1.6;
+        position: relative;
       }
-      
+
+      .error-description::before,
+      .error-description::after {
+        content: "「";
+        font-size: 24px;
+        color: var(--primary-color);
+        position: absolute;
+        opacity: 0.6;
+      }
+
+      .error-description::before {
+        left: 0;
+        top: -10px;
+      }
+
+      .error-description::after {
+        content: "」";
+        right: 0;
+        bottom: -15px;
+      }
+
       .error-actions {
         display: flex;
         justify-content: center;
-        gap: 20px;
+        gap: 30px;
+        position: relative;
       }
-      
+
+      /* 印章效果 */
+      .ancient-seal {
+        position: absolute;
+        bottom: -40px;
+        right: -20px;
+        width: 120px;
+        height: 120px;
+        background-image: url("images/ui/ancient-seal.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.3;
+        transform: rotate(15deg);
+      }
+
+      /* 按钮古风样式 */
+      .btn {
+        position: relative;
+        padding: 12px 30px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+
+      .btn i {
+        margin-right: 8px;
+      }
+
+      .btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("images/ui/paper-texture.png");
+        background-size: cover;
+        opacity: 0.1;
+        pointer-events: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+        box-shadow: 0 4px 15px rgba(140, 56, 38, 0.3);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .btn-download {
+        background-color: var(--secondary-color);
+        color: white;
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+      }
+
+      .btn-download:hover {
+        background-color: var(--secondary-dark);
+        transform: translateY(-2px);
+      }
+
       @media (max-width: 768px) {
         .error-code {
           font-size: 80px;
         }
-        
+
         .error-message {
-          font-size: 22px;
+          font-size: 24px;
         }
-        
+
         .error-content {
-          padding: 30px;
+          padding: 40px 30px;
           margin: 0 20px;
+        }
+
+        .error-actions {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+
+      /* 水墨加载动画 */
+      .ink-loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--light-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+
+      body.loaded .ink-loading-overlay {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .ink-splash {
+        width: 120px;
+        height: 120px;
+        background-image: url("images/ui/ink-loading.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: inkSpread 2s infinite alternate;
+      }
+
+      .loading-text {
+        margin-top: 20px;
+        font-size: 18px;
+        color: var(--dark-color);
+        font-family: "ZCOOL XiaoWei", serif;
+      }
+
+      @keyframes inkSpread {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.3;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0.8;
         }
       }
     </style>
   </head>
-  <body>
+  <body class="ancient-theme">
+    <!-- 水墨动画加载效果 -->
+    <div class="ink-loading-overlay">
+      <div class="ink-splash"></div>
+      <div class="loading-text">正在探寻您的踪迹...</div>
+    </div>
+
     <div id="errorApp">
       <div class="error-container">
+        <div class="ancient-pattern-overlay"></div>
+        <!-- 装饰性水墨元素 -->
+        <div class="ink-splash-decoration left"></div>
+        <div class="ink-splash-decoration right"></div>
+
         <div class="error-content">
-          <div class="error-code">404</div>
-          <h1 class="error-message">冒险家迷路了！</h1>
+          <div class="error-code">肆零肆</div>
+          <h1 class="error-message">迷失在时空的旅人</h1>
           <p class="error-description">
-            您似乎走入了荣耀战场的未知区域。这片区域可能尚未被探索，或已被黑暗力量摧毁。
+            您似乎误入了时空的未知领域。这片区域可能尚未被探索，或已在历史长河中消逝。
           </p>
           <div class="error-actions">
-            <a href="index.html" class="btn btn-primary">返回主城</a>
-            <a href="#" onclick="history.back(); return false;" class="btn btn-download">返回上一页</a>
+            <a href="index.html" class="btn btn-primary">
+              <i class="ri-home-4-line"></i> 返回主页
+            </a>
+            <a
+              href="#"
+              onclick="history.back(); return false;"
+              class="btn btn-download"
+            >
+              <i class="ri-arrow-go-back-line"></i> 返回上一页
+            </a>
           </div>
+          <!-- 印章装饰 -->
+          <div class="ancient-seal"></div>
         </div>
       </div>
     </div>
@@ -93,17 +359,17 @@
     <script>
       // 创建Vue应用
       const { createApp } = Vue;
-      
+
       // 初始化Vue应用
       const errorApp = createApp({
         mounted() {
           console.log("404页面已加载");
-          
+
           // 页面加载动画
           setTimeout(() => {
             document.body.classList.add("loaded");
-          }, 300);
-        }
+          }, 800);
+        },
       }).mount("#errorApp");
     </script>
   </body>
