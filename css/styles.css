@@ -7,17 +7,17 @@
 
 /* 基础样式 - 古风主题色调 */
 :root {
-  --primary-color: #8C3826; /* 朱砂红 */
-  --primary-dark: #6A2915; /* 深朱砂红 */
-  --secondary-color: #DAA520; /* 金赤色 */
-  --secondary-dark: #B8860B; /* 深金色 */
-  --dark-color: #2E271C; /* 墨黑 */
-  --medium-dark: #3E3A2E; /* 玄色 */
-  --light-color: #F8F3E9; /* 宣纸色 */
-  --accent-color: #507D7E; /* 青碧色 */
-  --gradient-primary: linear-gradient(135deg, #8C3826 0%, #C1614E 100%);
-  --gradient-secondary: linear-gradient(135deg, #DAA520 0%, #D4AF37 100%);
-  --gradient-dark: linear-gradient(135deg, #2E271C 0%, #3E3A2E 100%);
+  --primary-color: #8c3826; /* 朱砂红 */
+  --primary-dark: #6a2915; /* 深朱砂红 */
+  --secondary-color: #daa520; /* 金赤色 */
+  --secondary-dark: #b8860b; /* 深金色 */
+  --dark-color: #2e271c; /* 墨黑 */
+  --medium-dark: #3e3a2e; /* 玄色 */
+  --light-color: #f8f3e9; /* 宣纸色 */
+  --accent-color: #507d7e; /* 青碧色 */
+  --gradient-primary: linear-gradient(135deg, #8c3826 0%, #c1614e 100%);
+  --gradient-secondary: linear-gradient(135deg, #daa520 0%, #d4af37 100%);
+  --gradient-dark: linear-gradient(135deg, #2e271c 0%, #3e3a2e 100%);
   --gradient-glass: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1) 0%,
@@ -52,7 +52,7 @@
 }
 
 body {
-  font-family: "FZXS", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", 
+  font-family: "FZXS", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.6;
   color: var(--dark-color);
@@ -642,7 +642,7 @@ img {
 
 .image-placeholder {
   height: 500px;
-  background: linear-gradient(135deg, #8C3826, #C1614E);
+  background: linear-gradient(135deg, #8c3826, #c1614e);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -811,11 +811,7 @@ img {
       rgba(218, 165, 32, 0.15),
       transparent 40%
     ),
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(140, 56, 38, 0.15),
-      transparent 40%
-    );
+    radial-gradient(circle at 80% 80%, rgba(140, 56, 38, 0.15), transparent 40%);
 }
 
 .download-content {

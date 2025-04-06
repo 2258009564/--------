@@ -13,19 +13,24 @@
     <!-- 引入Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
   </head>
-  <body>
+  <body class="ancient-theme">
     <div id="app">
       <!-- 头部区域 -->
-      <header class="header" :class="{ 'scrolled': isScrolled }">
+      <header class="header ancient-header" :class="{ 'scrolled': isScrolled }">
         <div class="container">
-          <h1 class="game-title">{{ shortGameTitle }}</h1>
-          <nav class="nav">
+          <h1 class="game-title ancient-title">
+            <span class="title-decorator">【</span> {{ shortGameTitle }}
+            <span class="title-decorator">】</span>
+          </h1>
+          <nav class="nav ancient-nav">
             <ul>
-              <li><a href="#overview">游戏概述</a></li>
-              <li><a href="#features">游戏特色</a></li>
-              <li><a href="#system">系统需求</a></li>
-              <li><a href="#download" class="nav-highlight">立即下载</a></li>
-              <li><a href="about.html">关于我们</a></li>
+              <li><a href="#overview" class="nav-link">游戏概述</a></li>
+              <li><a href="#features" class="nav-link">游戏特色</a></li>
+              <li><a href="#system" class="nav-link">系统需求</a></li>
+              <li>
+                <a href="#download" class="nav-link nav-highlight">立即下载</a>
+              </li>
+              <li><a href="about.html" class="nav-link">关于我们</a></li>
             </ul>
           </nav>
         </div>
@@ -34,33 +39,41 @@
       <!-- 主要内容区域 -->
       <main>
         <!-- 英雄区域 -->
-        <section class="hero-section">
+        <section class="hero-section ancient-hero">
+          <div class="ancient-pattern-overlay"></div>
           <div class="container">
-            <div class="hero-content">
-              <h2>穿越时空<br />与北宋科学家的奇遇</h2>
-              <p>
-                踏上一段跨越千年的科学探索之旅，与古代科学巨匠沈括一起揭开物理学的奥秘
+            <div class="hero-content ancient-hero-content">
+              <h2>
+                <span class="brush-stroke">穿越时空</span><br /><span
+                  class="brush-stroke"
+                  >与北宋科学家的奇遇</span
+                >
+              </h2>
+              <p class="hero-quote">
+                「踏上一段跨越千年的科学探索之旅，与古代科学巨匠沈括一起揭开物理学的奥秘」
               </p>
-              <a href="#download" class="btn btn-primary"
+              <a href="#download" class="btn btn-primary ancient-btn"
                 ><i class="ri-download-cloud-2-line"></i> 开始冒险</a
               >
             </div>
           </div>
-          <div class="scroll-down">
+          <div class="scroll-down ancient-scroll">
             <span>向下滚动探索更多</span>
             <i class="ri-arrow-down-line"></i>
           </div>
         </section>
 
         <!-- 游戏概述 -->
-        <section id="overview" class="section">
+        <section id="overview" class="section ancient-section">
+          <div class="cloud-decorator top-right"></div>
+          <div class="cloud-decorator bottom-left"></div>
           <div class="container">
-            <h2 class="section-title">游戏概述</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title ancient-section-title">游戏概述</h2>
+            <p class="section-subtitle ancient-subtitle">
               穿越时空，与古代科学家共同探索科学奥秘
             </p>
             <div class="overview-content">
-              <div class="overview-text fade-in">
+              <div class="overview-text fade-in ancient-paper">
                 <p>
                   《{{ gameTitle
                   }}》是一款融合了科学教育、历史探索和角色扮演元素的沉浸式冒险游戏。在现代的某一天，一位大学生（玩家扮演的角色）在图书馆偶然发现了一本古老的书籍——《梦溪笔谈》。当他翻开书页时，一道神秘的光芒将他卷入了一个时空漩涡，穿越到了北宋时期，成为了著名科学家沈括的学徒。
@@ -72,7 +85,7 @@
                   这不仅是一场穿越时空的奇妙冒险，更是一次与历史对话、与科学共舞的非凡体验。你准备好跟随沈括的脚步，开启这段跨越千年的科学探索之旅了吗？
                 </p>
               </div>
-              <div class="overview-image fade-in delay-2">
+              <div class="overview-image fade-in delay-2 ancient-frame">
                 <div class="image-placeholder">游戏场景预览</div>
               </div>
             </div>
@@ -80,20 +93,24 @@
         </section>
 
         <!-- 游戏特色 -->
-        <section id="features" class="section section-dark">
+        <section
+          id="features"
+          class="section section-dark ancient-dark-section"
+        >
+          <div class="ancient-pattern-overlay dark"></div>
           <div class="container">
-            <h2 class="section-title">游戏特色</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title ancient-section-title">游戏特色</h2>
+            <p class="section-subtitle ancient-subtitle">
               发现让《{{ shortGameTitle }}》独一无二的精彩体验
             </p>
             <div class="features-grid">
               <div
-                class="feature-card fade-in"
+                class="feature-card fade-in ancient-feature-card"
                 v-for="feature in features"
                 :key="feature.id"
                 :class="'delay-' + (feature.id % 3)"
               >
-                <div class="feature-icon">
+                <div class="feature-icon ancient-icon">
                   <i :class="feature.iconClass"></i>
                 </div>
                 <h3>{{ feature.title }}</h3>
@@ -104,40 +121,59 @@
         </section>
 
         <!-- 章节预览 -->
-        <section id="chapters" class="section">
+        <section id="chapters" class="section ancient-chapter-section">
+          <div class="ancient-ornament top"></div>
+          <div class="ancient-ornament bottom"></div>
           <div class="container">
-            <h2 class="section-title">五章史诗冒险</h2>
-            <p class="section-subtitle">每一章都是一段独特的科学探索之旅</p>
+            <h2 class="section-title ancient-section-title">五章史诗冒险</h2>
+            <p class="section-subtitle ancient-subtitle">
+              每一章都是一段独特的科学探索之旅
+            </p>
             <div class="chapters-container">
-              <div class="chapter-card fade-in" data-number="I">
+              <div
+                class="chapter-card fade-in ancient-chapter-card"
+                data-number="壹"
+              >
                 <div class="chapter-number">第一章</div>
                 <h3>时空漩涡</h3>
                 <p>
                   被卷入时空漩涡，与沈括初次相遇，开始探索小孔成像的物理奥秘。
                 </p>
               </div>
-              <div class="chapter-card fade-in delay-1" data-number="II">
+              <div
+                class="chapter-card fade-in delay-1 ancient-chapter-card"
+                data-number="贰"
+              >
                 <div class="chapter-number">第二章</div>
                 <h3>光影之谜</h3>
                 <p>
                   协助沈括研究光线的传播规律，通过实验验证光的直线传播和反射原理。
                 </p>
               </div>
-              <div class="chapter-card fade-in delay-2" data-number="III">
+              <div
+                class="chapter-card fade-in delay-2 ancient-chapter-card"
+                data-number="叁"
+              >
                 <div class="chapter-number">第三章</div>
                 <h3>汴京的挑战</h3>
                 <p>
                   前往汴京，参与水利工程的设计，运用科学原理解决洪水泛滥的问题。
                 </p>
               </div>
-              <div class="chapter-card fade-in delay-1" data-number="IV">
+              <div
+                class="chapter-card fade-in delay-1 ancient-chapter-card"
+                data-number="肆"
+              >
                 <div class="chapter-number">第四章</div>
                 <h3>梦溪园的奇遇</h3>
                 <p>
                   在梦溪园中协助沈括撰写《梦溪笔谈》，研究磁针偏角等自然现象。
                 </p>
               </div>
-              <div class="chapter-card fade-in delay-2" data-number="V">
+              <div
+                class="chapter-card fade-in delay-2 ancient-chapter-card"
+                data-number="伍"
+              >
                 <div class="chapter-number">第五章</div>
                 <h3>回归与传承</h3>
                 <p>
@@ -149,14 +185,14 @@
         </section>
 
         <!-- 系统需求 -->
-        <section id="system" class="section">
+        <section id="system" class="section ancient-system-section">
           <div class="container">
-            <h2 class="section-title">系统需求</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title ancient-section-title">系统需求</h2>
+            <p class="section-subtitle ancient-subtitle">
               确保你的装备能够充分发挥游戏的最佳体验
             </p>
             <div class="requirements">
-              <div class="requirement-col fade-in">
+              <div class="requirement-col fade-in ancient-requirements-card">
                 <h3>最低配置</h3>
                 <ul>
                   <li><strong>操作系统:</strong> Windows 10 64位</li>
@@ -174,7 +210,9 @@
                   <li><strong>声卡:</strong> DirectX 兼容声卡</li>
                 </ul>
               </div>
-              <div class="requirement-col fade-in delay-1">
+              <div
+                class="requirement-col fade-in delay-1 ancient-requirements-card"
+              >
                 <h3>推荐配置</h3>
                 <ul>
                   <li><strong>操作系统:</strong> Windows 10/11 64位</li>
@@ -198,19 +236,26 @@
         </section>
 
         <!-- 下载区域 -->
-        <section id="download" class="section section-download">
+        <section
+          id="download"
+          class="section section-download ancient-download-section"
+        >
+          <div class="ancient-pattern-overlay"></div>
           <div class="container">
-            <h2 class="section-title">立即下载</h2>
+            <h2 class="section-title ancient-section-title">立即下载</h2>
             <div class="download-content">
-              <p>
-                准备好踏上冒险之旅了吗？现在就下载《{{ shortGameTitle
-                }}》，免费体验这款科学冒险游戏！
+              <p class="download-quote">
+                「准备好踏上冒险之旅了吗？现在就下载《{{ shortGameTitle
+                }}》，免费体验这款科学冒险游戏！」
               </p>
               <div class="download-options">
-                <button @click="downloadGame" class="btn btn-download">
+                <button
+                  @click="downloadGame"
+                  class="btn btn-download ancient-download-btn"
+                >
                   <i class="ri-download-cloud-2-line"></i> 立即下载
                 </button>
-                <span class="download-info"
+                <span class="download-info ancient-download-info"
                   >版本: {{ gameVersion }} | 大小: {{ gameSize }}</span
                 >
               </div>
@@ -220,11 +265,14 @@
       </main>
 
       <!-- 页脚区域 -->
-      <footer class="footer">
+      <footer class="footer ancient-footer">
+        <div class="ancient-pattern-overlay"></div>
         <div class="container">
           <div class="footer-content">
-            <p>&copy; 2025 理智先锋娱乐互动工作室. 保留所有权利。</p>
-            <div class="footer-links">
+            <p class="ancient-copyright">
+              &copy; 2025 理智先锋娱乐互动工作室. 保留所有权利。
+            </p>
+            <div class="footer-links ancient-footer-links">
               <a href="#"><i class="ri-shield-check-line"></i> 隐私政策</a>
               <a href="#"><i class="ri-file-list-3-line"></i> 使用条款</a>
               <a href="about.html"><i class="ri-team-line"></i> 关于我们</a>
