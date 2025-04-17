@@ -186,7 +186,7 @@ a {
 /* 英雄区域样式 */
 .hero-section {
   height: 100vh;
-  background-image: url("https://img.freepik.com/free-vector/chinese-painting-background_52683-63125.jpg");
+  background-image: url("hero-bg.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -462,61 +462,6 @@ a {
   margin-bottom: 15px;
   font-size: 1.3rem;
   color: var(--color-primary);
-}
-
-/* 系统需求样式 */
-.requirements {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 30px;
-}
-
-.requirement-col {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: var(--border-radius);
-  padding: 30px;
-  box-shadow: var(--shadow-normal);
-  border: 1px solid var(--color-primary-light);
-}
-
-.requirement-col h3 {
-  text-align: center;
-  color: var(--color-primary);
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed var(--color-primary-light);
-}
-
-.requirement-col ul {
-  list-style: none;
-}
-
-.requirement-col li {
-  margin-bottom: 12px;
-  padding-left: 20px;
-  position: relative;
-}
-
-.requirement-col li:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-}
-
-.recommendation {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: var(--border-radius);
-  padding: 20px;
-  border: 1px dashed var(--color-primary-light);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.recommendation h4 {
-  color: var(--color-primary);
-  margin-bottom: 10px;
 }
 
 /* 下载区域样式 */

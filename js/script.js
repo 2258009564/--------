@@ -436,10 +436,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(preloadImages, 100);
 
-  // 添加3D悬停效果到特色卡片和系统需求卡片
-  const cards = document.querySelectorAll(
-    ".feature-card, .requirement-col, .chapter-card"
-  );
+  // 添加3D悬停效果到特色卡片和章节卡片
+  const cards = document.querySelectorAll(".feature-card, .chapter-card");
 
   cards.forEach((card) => {
     let rafId = null;
@@ -620,4 +618,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.innerWidth > 768) {
     createFloatingElements();
   }
+
+  // 删除与创作历程相关的JavaScript代码
+  document.querySelectorAll(".tech-card").forEach((el) => {
+    observer.observe(el);
+  });
 });
