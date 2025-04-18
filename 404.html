@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - 页面未找到</title>
+    <title>时空迷途 - 理科生穿越之旅</title>
     <link rel="stylesheet" href="css/styles.css" />
     <!-- 引入字体图标 -->
     <link
@@ -25,289 +25,89 @@
     <!-- 引入Vue.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
     <style>
-      /* 404页面自定义样式 */
-      .error-container {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-          url("https://img.freepik.com/free-vector/chinese-painting-background_52683-63125.jpg");
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        overflow: hidden;
+      /* 基础样式继承 */
+      :root {
+        --scroll-bg: #f8f4e9;
+        --scroll-edge: #d4b886;
+        --ink-dark: #2c2017;
+        --ink-light: #5a4a3e;
+        --accent-color: #8b5a2b;
+        --light-text: #f8f4e9;
+        --parchment: #f7f3e6;
+        --shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.25);
       }
 
-      /* 古风装饰元素 */
-      .ancient-pattern-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("https://img.freepik.com/free-vector/chinese-pattern-background_53876-90035.jpg");
-        background-size: cover;
-        opacity: 0.15;
-        pointer-events: none;
-      }
-
-      .ink-splash-decoration {
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        background-image: url("https://img.freepik.com/free-vector/traditional-chinese-painting-landscape_52683-63367.jpg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        opacity: 0.2;
-        filter: blur(2px);
-      }
-
-      .ink-splash-decoration.left {
-        top: 10%;
-        left: -50px;
-        transform: rotate(-45deg) scale(1.5);
-      }
-
-      .ink-splash-decoration.right {
-        bottom: 5%;
-        right: -50px;
-        transform: rotate(30deg) scale(1.8);
-      }
-
-      .error-content {
-        max-width: 700px;
-        padding: 60px;
-        background-color: rgba(248, 244, 233, 0.9);
-        border-radius: var(--border-radius);
-        backdrop-filter: blur(5px);
-        position: relative;
-        box-shadow: var(--shadow-large);
-        border: 2px solid var(--color-primary-light);
-        z-index: 1;
+      body {
+        margin: 0;
+        padding: 0;
         font-family: var(--font-primary);
-      }
-
-      /* 卷轴效果 */
-      .error-content::before,
-      .error-content::after {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 100%;
-        top: 0;
-        background: linear-gradient(
-          90deg,
-          var(--color-primary-light),
-          var(--color-primary)
-        );
-        opacity: 0.3;
-      }
-
-      .error-content::before {
-        left: -5px;
-        border-top-left-radius: var(--border-radius);
-        border-bottom-left-radius: var(--border-radius);
-      }
-
-      .error-content::after {
-        right: -5px;
-        border-top-right-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
-      }
-
-      .error-code {
-        font-size: 120px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        background: linear-gradient(
-          135deg,
-          var(--color-primary-light),
-          var(--color-primary)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        font-family: var(--font-title);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        position: relative;
-        display: inline-block;
-      }
-
-      .error-code::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--color-primary),
-          transparent
-        );
-      }
-
-      .error-message {
-        font-size: 32px;
-        margin-bottom: 30px;
-        color: var(--color-secondary);
-        font-weight: 600;
-        letter-spacing: 1px;
-      }
-
-      .error-description {
+        background-color: var(--color-bg);
         color: var(--color-text);
-        margin-bottom: 40px;
-        font-size: 18px;
-        line-height: 1.6;
-        position: relative;
-        padding: 0 30px;
+        overflow-x: hidden;
+        /* 使用与index.html一致的背景图案 */
+        background-image: url("https://img.freepik.com/free-vector/chinese-pattern-background_53876-90035.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-blend-mode: overlay;
       }
 
-      .error-description::before,
-      .error-description::after {
-        content: "「";
-        font-size: 24px;
-        color: var(--color-primary);
-        position: absolute;
-        opacity: 0.6;
-      }
-
-      .error-description::before {
-        left: 0;
-        top: -10px;
-      }
-
-      .error-description::after {
-        content: "」";
-        right: 0;
-        bottom: -15px;
-      }
-
-      .error-actions {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        position: relative;
-      }
-
-      /* 印章效果 */
-      .ancient-seal {
-        position: absolute;
-        bottom: -40px;
-        right: -20px;
-        width: 120px;
-        height: 120px;
-        background-color: var(--color-primary);
-        background-size: contain;
-        background-repeat: no-repeat;
-        opacity: 0.15;
-        transform: rotate(15deg);
-        border-radius: 50%;
-      }
-
-      /* 水墨加载动画 */
-      .ink-loading-overlay {
+      /* 页面背景遮罩 */
+      .ancient-pattern-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: var(--color-bg);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 0;
       }
 
-      body.loaded .ink-loading-overlay {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      .ink-splash {
-        width: 120px;
-        height: 120px;
-        background-color: var(--color-primary);
-        opacity: 0.8;
-        border-radius: 50%;
-        animation: inkSpread 2s infinite alternate;
+      /* 卷轴样式 */
+      .ancient-scroll {
         position: relative;
-        overflow: hidden;
+        max-width: 800px;
+        margin: 120px auto 50px;
+        background: var(--scroll-bg);
+        border-radius: 10px;
+        padding: 60px 40px;
+        box-shadow: var(--shadow-deep);
+        border: 1px solid var(--scroll-edge);
+        transform: perspective(1000px) rotateX(5deg);
+        z-index: 10;
       }
 
-      .ink-splash::before {
-        content: "";
+      /* 卷轴两端 */
+      .scroll-end {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url("https://img.freepik.com/free-vector/chinese-pattern-background_53876-90035.jpg");
-        background-size: cover;
-        opacity: 0.1;
-        border-radius: 50%;
+        width: 40px;
+        height: 120%;
+        top: -10%;
+        background: var(--scroll-edge);
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 5;
       }
 
-      .loading-text {
-        margin-top: 20px;
-        font-size: 18px;
-        color: var(--color-secondary);
-        font-family: var(--font-primary);
+      .scroll-start {
+        left: -5px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
       }
 
-      @keyframes inkSpread {
-        0% {
-          transform: scale(0.8);
-          opacity: 0.3;
-        }
-        100% {
-          transform: scale(1.2);
-          opacity: 0.8;
-        }
+      .scroll-finish {
+        right: -5px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
       }
 
-      /* 返回首页按钮样式 */
-      .btn-primary {
-        background: var(--color-primary);
-        color: var(--color-text-light);
-        box-shadow: var(--shadow-normal);
-      }
-
-      .btn-primary:hover {
-        background: var(--color-secondary);
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-large);
-      }
-
-      .btn-download {
-        background: rgba(139, 90, 43, 0.8);
-        color: var(--color-text-light);
-        box-shadow: var(--shadow-normal);
-      }
-
-      .btn-download:hover {
-        background: rgba(90, 57, 33, 0.9);
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-large);
-      }
-
-      .btn i {
-        margin-right: 8px;
-      }
-
-      /* 添加古风装饰元素 */
+      /* 云朵装饰元素 - 与index.html保持一致 */
       .cloud-decorator {
         position: absolute;
         background-image: url("https://img.freepik.com/free-vector/chinese-cloud-pattern_53876-88467.jpg");
         background-size: contain;
         background-repeat: no-repeat;
         opacity: 0.15;
-        z-index: 0;
+        z-index: 1;
+        pointer-events: none;
       }
 
       .cloud-decorator.top-right {
@@ -326,66 +126,286 @@
         transform: rotate(-15deg);
       }
 
-      /* 响应式调整 */
+      /* 主要内容 */
+      .scroll-content {
+        position: relative;
+        z-index: 10;
+        color: var(--ink-dark);
+        text-align: center;
+      }
+
+      .error-title {
+        font-family: var(--font-title);
+        font-size: 4rem;
+        margin: 0 0 20px;
+        color: var(--accent-color);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .error-subtitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+
+      .error-message {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 40px;
+        text-align: center;
+        position: relative;
+        padding: 0 20px;
+      }
+
+      .error-message::before,
+      .error-message::after {
+        content: "「";
+        font-family: var(--font-title);
+        font-size: 2.5rem;
+        position: absolute;
+        color: var(--accent-color);
+        opacity: 0.5;
+      }
+
+      .error-message::before {
+        top: -20px;
+        left: 0;
+      }
+
+      .error-message::after {
+        content: "」";
+        bottom: -30px;
+        right: 0;
+      }
+
+      /* 墨迹装饰 */
+      .ink-decoration {
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.08;
+        z-index: 1;
+      }
+
+      .ink-splash1 {
+        width: 200px;
+        height: 200px;
+        background-image: url("https://img.freepik.com/free-vector/abstract-black-ink-splatter-texture-background_1017-33713.jpg");
+        top: 10%;
+        left: -50px;
+        transform: rotate(-30deg);
+      }
+
+      .ink-splash2 {
+        width: 150px;
+        height: 150px;
+        background-image: url("https://img.freepik.com/free-vector/abstract-black-ink-splatter-texture-background_1017-33713.jpg");
+        bottom: 10%;
+        right: -30px;
+        transform: rotate(45deg);
+      }
+
+      /* 印章效果 */
+      .seal {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        width: 100px;
+        height: 100px;
+        background-color: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(15deg);
+        opacity: 0.8;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .seal-text {
+        color: var(--light-text);
+        font-family: var(--font-title);
+        font-size: 1.5rem;
+        transform: rotate(-15deg);
+      }
+
+      /* 按钮样式 - 与index.html保持一致 */
+      .actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 40px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        background: var(--color-primary);
+        color: var(--color-text-light);
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition-normal);
+        box-shadow: var(--shadow-normal);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn:hover {
+        background: var(--color-secondary);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-large);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid var(--color-primary-light);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .btn i {
+        font-size: 1.2rem;
+      }
+
+      /* 加载效果 - 简化版 */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        transition: opacity 1s ease;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 3px solid rgba(139, 90, 43, 0.1);
+        border-top-color: var(--color-primary);
+        border-radius: 50%;
+        animation: spin 1s infinite linear;
+        margin-bottom: 20px;
+      }
+
+      .loading-text {
+        color: var(--color-primary);
+        font-family: var(--font-primary);
+        font-size: 1.2rem;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 响应式设计 */
       @media (max-width: 768px) {
-        .error-code {
-          font-size: 80px;
+        .ancient-scroll {
+          margin: 80px 20px 40px;
+          padding: 40px 20px;
         }
 
-        .error-message {
-          font-size: 24px;
+        .error-title {
+          font-size: 3rem;
         }
 
-        .error-content {
-          padding: 40px 30px;
-          margin: 0 20px;
+        .error-subtitle {
+          font-size: 1.5rem;
         }
 
-        .error-actions {
+        .actions {
           flex-direction: column;
-          gap: 15px;
+          align-items: center;
+        }
+
+        .ink-splash1,
+        .ink-splash2 {
+          width: 100px;
+          height: 100px;
+        }
+
+        .seal {
+          width: 80px;
+          height: 80px;
+          bottom: 20px;
+          right: 20px;
+        }
+
+        .seal-text {
+          font-size: 1.2rem;
         }
       }
     </style>
   </head>
   <body class="ancient-theme">
-    <!-- 水墨动画加载效果 -->
-    <div class="ink-loading-overlay">
-      <div class="ink-splash"></div>
-      <div class="loading-text">正在探寻您的踪迹...</div>
-    </div>
-
     <div id="errorApp">
-      <div class="error-container">
-        <div class="ancient-pattern-overlay"></div>
-        <!-- 装饰性云朵元素 -->
-        <div class="cloud-decorator top-right"></div>
-        <div class="cloud-decorator bottom-left"></div>
-        <!-- 装饰性水墨元素 -->
-        <div class="ink-splash-decoration left"></div>
-        <div class="ink-splash-decoration right"></div>
+      <!-- 与index.html一致的背景遮罩 -->
+      <div class="ancient-pattern-overlay"></div>
 
-        <div class="error-content">
-          <div class="error-code">肆零肆</div>
-          <h1 class="error-message">迷失在时空的旅人</h1>
-          <p class="error-description">
-            您似乎误入了时空的未知领域。这片区域可能尚未被探索，或已在历史长河中消逝。让我们一同寻找回到主世界的路径。
-          </p>
-          <div class="error-actions">
-            <a href="index.html" class="btn btn-primary">
+      <!-- 云朵装饰 -->
+      <div class="cloud-decorator top-right"></div>
+      <div class="cloud-decorator bottom-left"></div>
+
+      <!-- 主要内容-卷轴 -->
+      <div class="ancient-scroll">
+        <!-- 卷轴装饰 -->
+        <div class="scroll-end scroll-start"></div>
+        <div class="scroll-end scroll-finish"></div>
+
+        <!-- 墨迹装饰 -->
+        <div class="ink-decoration ink-splash1"></div>
+        <div class="ink-decoration ink-splash2"></div>
+
+        <!-- 内容 -->
+        <div class="scroll-content">
+          <h1 class="error-title">时空迷途</h1>
+          <h2 class="error-subtitle">您似乎偏离了穿越轨迹</h2>
+
+          <div class="error-message">
+            <p>
+              传说中的时空之路并非总是平坦。有时，旅人会在穿越过程中迷失方向，来到不存在的时空节点。
+              不必惊慌，这只是时空乱流的小小玩笑。静心调整，我们终将回到正确的轨迹。
+            </p>
+            <p>——《梦溪笔谈》残页批注</p>
+          </div>
+
+          <div class="actions">
+            <a href="index.html" class="btn">
               <i class="ri-home-4-line"></i> 返回主页
             </a>
-            <a
-              href="#"
-              onclick="history.back(); return false;"
-              class="btn btn-download"
-            >
+            <a href="#" @click.prevent="goBack" class="btn btn-secondary">
               <i class="ri-arrow-go-back-line"></i> 返回上一页
             </a>
           </div>
-          <!-- 印章装饰 -->
-          <div class="ancient-seal"></div>
         </div>
+
+        <!-- 印章 -->
+        <div class="seal">
+          <span class="seal-text">迷途</span>
+        </div>
+      </div>
+
+      <!-- 加载遮罩 - 简化版 -->
+      <div
+        class="loading-overlay"
+        :style="{opacity: isLoading ? 1 : 0, visibility: isLoading ? 'visible' : 'hidden'}"
+      >
+        <div class="loading-spinner"></div>
+        <div class="loading-text">正在寻找时空坐标...</div>
       </div>
     </div>
 
@@ -393,43 +413,25 @@
       // 创建Vue应用
       const { createApp } = Vue;
 
-      // 初始化Vue应用
-      const errorApp = createApp({
-        mounted() {
-          console.log("404页面已加载");
-
-          // 页面加载动画
-          setTimeout(() => {
-            document.body.classList.add("loaded");
-          }, 800);
-
-          // 添加浮动装饰元素动画
-          const floatElements = () => {
-            const clouds = document.querySelectorAll(".cloud-decorator");
-
-            clouds.forEach((cloud, index) => {
-              const direction = index % 2 === 0 ? 1 : -1;
-              const delay = index * 500;
-
-              setTimeout(() => {
-                cloud.style.transition = "transform 3s ease-in-out";
-
-                setInterval(() => {
-                  cloud.style.transform = `translate(${
-                    5 * direction
-                  }px, ${5}px) rotate(${index * 10 + 5}deg)`;
-
-                  setTimeout(() => {
-                    cloud.style.transform = `translate(0, 0) rotate(${
-                      index * 10
-                    }deg)`;
-                  }, 1500);
-                }, 3000);
-              }, delay);
-            });
+      createApp({
+        data() {
+          return {
+            isLoading: true,
           };
+        },
 
-          floatElements();
+        mounted() {
+          // 加载动画
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 1000);
+        },
+
+        methods: {
+          // 返回上一页
+          goBack() {
+            window.history.back();
+          },
         },
       }).mount("#errorApp");
     </script>
