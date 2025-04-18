@@ -623,4 +623,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".tech-card").forEach((el) => {
     observer.observe(el);
   });
+
+  // 如果存在生成导航菜单的JavaScript代码，确保删除系统需求相关部分
+  const navItems = [
+    { text: "游戏概述", link: "#overview" },
+    { text: "游戏特色", link: "#features" },
+    { text: "立即下载", link: "#download", highlight: true },
+    { text: "关于我们", link: "about.html" },
+  ];
 });
