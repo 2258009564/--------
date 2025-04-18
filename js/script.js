@@ -7,7 +7,7 @@ const app = createApp({
   data() {
     return {
       // 游戏基本信息
-      gameTitle: "理科生穿越之旅——与北宋沈括的故事",
+      gameTitle: "理科生穿越之旅——枢焰光极",
       shortGameTitle: "理科生穿越之旅",
       gameVersion: "v1.2.1",
       gameSize: "32.8 GB",
